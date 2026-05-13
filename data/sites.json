@@ -1,19 +1,225 @@
 [
-  {"name":"OpenRouter","url":"https://openrouter.ai/","description":"老牌多模型网关","models":["gpt","claude","gemini","multi","domestic"],"priceTier":"standard","featured":true},
-  {"name":"SiliconFlow","url":"https://cloud.siliconflow.cn/","description":"开源模型性价比高","models":["multi","domestic"],"priceTier":"free","featured":true},
-  {"name":"302.AI","url":"https://302.ai/","description":"按量聚合模型商店","models":["gpt","claude","gemini","multi","domestic"],"priceTier":"standard","featured":true},
-  {"name":"AiHubMix","url":"https://aihubmix.com/","description":"200+模型统一接口","models":["gpt","claude","gemini","multi","domestic"],"priceTier":"budget","featured":true},
-  {"name":"YesCode","url":"https://co.yes.vg/","description":"编程Agent统一路由","models":["gpt","claude","gemini"],"priceTier":"free","featured":true},
-  {"name":"API2D","url":"https://api2d.com/","description":"老牌OpenAI中转","models":["gpt","claude"],"priceTier":"standard","featured":false},
-  {"name":"CloseAI","url":"https://www.closeai-asia.com/","description":"企业级模型中转","models":["gpt","claude","gemini","multi"],"priceTier":"standard","featured":false},
-  {"name":"ChatAnywhere","url":"https://chatanywhere.tech/","description":"低价GPT与DeepSeek","models":["gpt","domestic"],"priceTier":"budget","featured":false},
-  {"name":"UIUIAPI","url":"https://uiuiapi.com/","description":"300+模型聚合平台","models":["gpt","claude","gemini","multi","domestic"],"priceTier":"budget","featured":false},
-  {"name":"FuhuAPI","url":"https://fuhuapi.com/","description":"全网大模型聚合","models":["gpt","claude","gemini","multi","domestic"],"priceTier":"budget","featured":false},
-  {"name":"UnifyLLM","url":"https://www.unifyllm.com/","description":"企业级LLM中转","models":["gpt","claude","gemini","multi","domestic"],"priceTier":"budget","featured":false},
-  {"name":"PatewayAI","url":"https://pateway.ai/","description":"Claude与Codex通道","models":["gpt","claude"],"priceTier":"standard","featured":false},
-  {"name":"Gotoken","url":"https://gotoken.ai/","description":"100+模型按量计费","models":["gpt","claude","gemini","multi"],"priceTier":"standard","featured":false},
-  {"name":"MixRoute","url":"https://mixroute.ai/","description":"单Key接入多模型","models":["gpt","claude","gemini","multi","domestic"],"priceTier":"standard","featured":false},
-  {"name":"API.shop","url":"https://api.shop/","description":"内测多模型接口店","models":["gpt","claude","gemini","multi","domestic"],"priceTier":"standard","featured":false},
-  {"name":"n1n.ai","url":"https://n1n.ai/","description":"500+模型统一接入","models":["gpt","claude","gemini","multi"],"priceTier":"standard","featured":false},
-  {"name":"LingyaAI","url":"https://api.lingyaai.cn/","description":"低成本多模型中转","models":["gpt","claude","gemini","multi","domestic"],"priceTier":"budget","featured":false}
+  {
+    "name": "OpenRouter",
+    "url": "https://openrouter.ai/",
+    "description": "老牌多模型网关",
+    "models": [
+      "gpt",
+      "claude",
+      "gemini",
+      "multi",
+      "domestic"
+    ],
+    "priceTier": "standard",
+    "featured": true
+  },
+  {
+    "name": "302.AI",
+    "url": "https://302.ai/",
+    "description": "按量聚合模型商店",
+    "models": [
+      "gpt",
+      "claude",
+      "gemini",
+      "multi",
+      "domestic"
+    ],
+    "priceTier": "standard",
+    "featured": true
+  },
+  {
+    "name": "AiHubMix",
+    "url": "https://aihubmix.com/",
+    "description": "200+模型统一接口",
+    "models": [
+      "gpt",
+      "claude",
+      "gemini",
+      "multi",
+      "domestic"
+    ],
+    "priceTier": "budget",
+    "featured": true
+  },
+  {
+    "name": "YesCode",
+    "url": "https://co.yes.vg/",
+    "description": "编程Agent统一路由",
+    "models": [
+      "gpt",
+      "claude",
+      "gemini"
+    ],
+    "priceTier": "free",
+    "featured": true
+  },
+  {
+    "name": "API2D",
+    "url": "https://api2d.com/",
+    "description": "老牌OpenAI中转",
+    "models": [
+      "gpt",
+      "claude"
+    ],
+    "priceTier": "standard",
+    "featured": false
+  },
+  {
+    "name": "CloseAI",
+    "url": "https://www.closeai-asia.com/",
+    "description": "企业级模型中转",
+    "models": [
+      "gpt",
+      "claude",
+      "gemini",
+      "multi"
+    ],
+    "priceTier": "standard",
+    "featured": false
+  },
+  {
+    "name": "ChatAnywhere",
+    "url": "https://chatanywhere.tech/",
+    "description": "低价GPT与DeepSeek",
+    "models": [
+      "gpt",
+      "domestic"
+    ],
+    "priceTier": "budget",
+    "featured": false
+  },
+  {
+    "name": "UIUIAPI",
+    "url": "https://uiuiapi.com/",
+    "description": "300+模型聚合平台",
+    "models": [
+      "gpt",
+      "claude",
+      "gemini",
+      "multi",
+      "domestic"
+    ],
+    "priceTier": "budget",
+    "featured": false
+  },
+  {
+    "name": "FuhuAPI",
+    "url": "https://fuhuapi.com/",
+    "description": "全网大模型聚合",
+    "models": [
+      "gpt",
+      "claude",
+      "gemini",
+      "multi",
+      "domestic"
+    ],
+    "priceTier": "budget",
+    "featured": false
+  },
+  {
+    "name": "UnifyLLM",
+    "url": "https://www.unifyllm.com/",
+    "description": "企业级LLM中转",
+    "models": [
+      "gpt",
+      "claude",
+      "gemini",
+      "multi",
+      "domestic"
+    ],
+    "priceTier": "budget",
+    "featured": false
+  },
+  {
+    "name": "PatewayAI",
+    "url": "https://pateway.ai/",
+    "description": "Claude与Codex通道",
+    "models": [
+      "gpt",
+      "claude"
+    ],
+    "priceTier": "standard",
+    "featured": false
+  },
+  {
+    "name": "Gotoken",
+    "url": "https://gotoken.ai/",
+    "description": "100+模型按量计费",
+    "models": [
+      "gpt",
+      "claude",
+      "gemini",
+      "multi"
+    ],
+    "priceTier": "standard",
+    "featured": false
+  },
+  {
+    "name": "MixRoute",
+    "url": "https://mixroute.ai/",
+    "description": "单Key接入多模型",
+    "models": [
+      "gpt",
+      "claude",
+      "gemini",
+      "multi",
+      "domestic"
+    ],
+    "priceTier": "standard",
+    "featured": false
+  },
+  {
+    "name": "API.shop",
+    "url": "https://api.shop/",
+    "description": "内测多模型接口店",
+    "models": [
+      "gpt",
+      "claude",
+      "gemini",
+      "multi",
+      "domestic"
+    ],
+    "priceTier": "standard",
+    "featured": false
+  },
+  {
+    "name": "n1n.ai",
+    "url": "https://n1n.ai/",
+    "description": "500+模型统一接入",
+    "models": [
+      "gpt",
+      "claude",
+      "gemini",
+      "multi"
+    ],
+    "priceTier": "standard",
+    "featured": false
+  },
+  {
+    "name": "LingyaAI",
+    "url": "https://api.lingyaai.cn/",
+    "description": "低成本多模型中转",
+    "models": [
+      "gpt",
+      "claude",
+      "gemini",
+      "multi",
+      "domestic"
+    ],
+    "priceTier": "budget",
+    "featured": false
+  },
+  {
+    "name": "转发站",
+    "url": "https://www.zhuanfazhan.com/home",
+    "description": "高性价比多模型中转服务",
+    "models": [
+      "gpt",
+      "claude",
+      "gemini",
+      "multi"
+    ],
+    "priceTier": "standard",
+    "featured": false
+  }
 ]
