@@ -26,17 +26,17 @@ export default function HomeClient({ initialSites }: HomeClientProps) {
   }, [initialSites]);
 
   const displayedSites = useMemo(() => {
-    const result = [...initialSites];
+    let result = [...initialSites];
     
     // 1. Filter by category
     if (activeCategory !== 'all') {
-      return result.filter(site => site.models.includes(activeCategory as ModelCategory));
+      result = result.filter(site => site.models.includes(activeCategory as ModelCategory));
     }
 
     // 2. Filter by search term
     if (searchTerm.trim()) {
       const lowerTerm = searchTerm.toLowerCase();
-      return result.filter(site => 
+      result = result.filter(site => 
         site.name.toLowerCase().includes(lowerTerm) || 
         site.description.toLowerCase().includes(lowerTerm)
       );
@@ -99,28 +99,26 @@ export default function HomeClient({ initialSites }: HomeClientProps) {
 
       <main className="flex-1 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         
-        {/* 精选推荐区 - Only show if not searching or filtering */}
-        {!searchTerm && activeCategory === 'all' && (
-          <section className="mb-16">
-            <div className="flex items-center justify-between mb-8">
-              <h2 className="text-2xl font-bold text-gray-900 tracking-tight flex items-center gap-2">
-                <span className="p-2 bg-indigo-100 rounded-lg text-indigo-600">
-                  <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
-                  </svg>
-                </span>
-                精选推荐
-              </h2>
-            </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-              {featuredSites.map((site) => (
-                <div key={site.name} className="relative">
-                  <SiteCard site={site} />
-                </div>
-              ))}
-            </div>
-          </section>
-        )}
+        {/* 精选推荐区 - 常驻显示 */}
+        <section className="mb-16">
+          <div className="flex items-center justify-between mb-8">
+            <h2 className="text-2xl font-bold text-gray-900 tracking-tight flex items-center gap-2">
+              <span className="p-2 bg-indigo-100 rounded-lg text-indigo-600">
+                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+                </svg>
+              </span>
+              精选推荐
+            </h2>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            {featuredSites.map((site) => (
+              <div key={site.name} className="relative">
+                <SiteCard site={site} />
+              </div>
+            ))}
+          </div>
+        </section>
 
         {/* Categories / Filter Section */}
         <section className="mb-10">
@@ -134,10 +132,7 @@ export default function HomeClient({ initialSites }: HomeClientProps) {
               {CATEGORIES.map((cat) => (
                 <button
                   key={cat.value}
-                  onClick={() => {
-                    setActiveCategory(cat.value);
-                    setSearchTerm(''); // Clear search when switching tabs
-                  }}
+                  onClick={() => setActiveCategory(cat.value)}
                   className={`px-4 py-2 text-sm font-semibold rounded-lg transition-all duration-200 ${
                     activeCategory === cat.value
                       ? 'bg-white text-indigo-600 shadow-sm ring-1 ring-gray-900/5'
@@ -156,10 +151,7 @@ export default function HomeClient({ initialSites }: HomeClientProps) {
               {CATEGORIES.map((cat) => (
                 <button
                   key={cat.value}
-                  onClick={() => {
-                    setActiveCategory(cat.value);
-                    setSearchTerm('');
-                  }}
+                  onClick={() => setActiveCategory(cat.value)}
                   className={`px-4 py-2 whitespace-nowrap text-sm font-medium rounded-full border ${
                     activeCategory === cat.value
                       ? 'bg-indigo-50 border-indigo-200 text-indigo-700'
