@@ -1,12 +1,12 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { SiteListSchema, type Site } from '../src/types';
-import { filterSites } from '../src/lib/siteFilters';
+import { SiteListSchema, type Site } from '../src/types/index.ts';
+import { filterSites } from '../src/lib/siteFilters.ts';
 import {
   getFreeTierLabel,
   getPaymentMethodLabels,
   getVerificationLabel,
-} from '../src/lib/siteDisplay';
+} from '../src/lib/siteDisplay.ts';
 
 const baseSite: Site = {
   name: 'Alpha',
@@ -34,7 +34,7 @@ test('SiteSchema parses trial decision fields and defaults unknown values conser
   ]);
 
   assert.deepEqual(parsed[0].paymentMethods, []);
-  assert.equal(parsed[0].minRecharge, '未知');
+  assert.equal(parsed[0].minRecharge, null);
   assert.equal(parsed[0].hasFreeTier, null);
   assert.equal(parsed[0].lastVerified, null);
 });

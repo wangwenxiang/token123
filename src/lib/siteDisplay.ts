@@ -1,4 +1,4 @@
-import type { PaymentMethod } from '../types';
+import type { PaymentMethod } from '../types/index.ts';
 
 const PAYMENT_METHOD_LABELS: Record<PaymentMethod, string> = {
   alipay: 'Alipay',

@@ -1,4 +1,4 @@
-import type { ModelCategory, PaymentMethod, Site } from '../types';
+import type { ModelCategory, PaymentMethod, Site } from '../types/index.ts';
 
 export interface SiteFilterOptions {
   category: string;
