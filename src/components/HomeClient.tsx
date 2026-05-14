@@ -1,8 +1,9 @@
 'use client';
 
 import React, { useState, useMemo } from 'react';
-import { Site, ModelCategory } from '@/types';
+import type { PaymentMethod, Site } from '@/types';
 import SiteCard from './SiteCard';
+import { filterSites } from '@/lib/siteFilters';
 
 interface HomeClientProps {
   initialSites: Site[];
@@ -17,41 +18,37 @@ const CATEGORIES = [
   { label: '国产模型', value: 'domestic' },
 ];
 
+const PAYMENT_FILTERS: { label: string; value: PaymentMethod }[] = [
+  { label: '支付宝', value: 'alipay' },
+  { label: '微信', value: 'wechat' },
+];
+
 export default function HomeClient({ initialSites }: HomeClientProps) {
   const [searchTerm, setSearchTerm] = useState('');
   const [activeCategory, setActiveCategory] = useState('all');
+  const [selectedPaymentMethods, setSelectedPaymentMethods] = useState<PaymentMethod[]>([]);
+  const [onlyFreeTier, setOnlyFreeTier] = useState(false);
 
   const featuredSites = useMemo(() => {
     return initialSites.filter((site) => site.featured);
   }, [initialSites]);
 
   const displayedSites = useMemo(() => {
-    let result = [...initialSites];
-    
-    // 1. Filter by category
-    if (activeCategory !== 'all') {
-      result = result.filter(site => site.models.includes(activeCategory as ModelCategory));
-    }
-
-    // 2. Filter by search term
-    if (searchTerm.trim()) {
-      const lowerTerm = searchTerm.toLowerCase();
-      result = result.filter(site => 
-        site.name.toLowerCase().includes(lowerTerm) || 
-        site.description.toLowerCase().includes(lowerTerm)
-      );
-    }
-    
-    // 3. Sort: Feature sites first, then alphabetical
-    result.sort((a, b) => {
-      if (a.featured !== b.featured) {
-        return a.featured ? -1 : 1;
-      }
-      return a.name.localeCompare(b.name);
+    return filterSites(initialSites, {
+      category: activeCategory,
+      searchTerm,
+      paymentMethods: selectedPaymentMethods,
+      onlyFreeTier,
     });
+  }, [initialSites, activeCategory, searchTerm, selectedPaymentMethods, onlyFreeTier]);
 
-    return result;
-  }, [initialSites, activeCategory, searchTerm]);
+  const togglePaymentMethod = (method: PaymentMethod) => {
+    setSelectedPaymentMethods((current) =>
+      current.includes(method)
+        ? current.filter((item) => item !== method)
+        : [...current, method],
+    );
+  };
 
   return (
     <div className="flex flex-col min-h-screen bg-white selection:bg-indigo-100 selection:text-indigo-900">
@@ -87,6 +84,14 @@ export default function HomeClient({ initialSites }: HomeClientProps) {
       </div>
 
       <main className="flex-1 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+        <section className="mb-6 rounded-lg border border-indigo-100 bg-indigo-50/60 px-4 py-3">
+          <h2 className="text-sm font-bold text-indigo-950 mb-2">怎么选中转站？</h2>
+          <div className="grid gap-2 text-xs sm:grid-cols-3 text-indigo-900">
+            <p><span className="font-semibold">1.</span> 先挑「免费试用」的，零成本试。</p>
+            <p><span className="font-semibold">2.</span> 看支付是否方便，避免注册后不能付。</p>
+            <p><span className="font-semibold">3.</span> 小额充值测模型质量，别一次充太多。</p>
+          </div>
+        </section>
         
         {/* 精选推荐区 - 常驻显示 */}
         <section className="mb-8">
@@ -111,7 +116,7 @@ export default function HomeClient({ initialSites }: HomeClientProps) {
 
         {/* Categories / Filter Section */}
         <section className="mb-6">
-          <div className="flex items-center justify-between border-b border-gray-200 pb-5">
+          <div className="flex flex-col gap-4 border-b border-gray-200 pb-5 lg:flex-row lg:items-center lg:justify-between">
             <h2 className="text-2xl font-bold text-gray-900 tracking-tight">
               {searchTerm ? '搜索结果' : '所有站点'}
             </h2>
@@ -131,6 +136,40 @@ export default function HomeClient({ initialSites }: HomeClientProps) {
                   {cat.label}
                 </button>
               ))}
+            </div>
+
+            <div className="flex flex-wrap items-center gap-2">
+              <label className={`inline-flex cursor-pointer items-center gap-2 rounded-lg px-3 py-2 text-sm font-semibold ring-1 ring-inset transition-colors ${
+                onlyFreeTier
+                  ? 'bg-emerald-50 text-emerald-700 ring-emerald-600/20'
+                  : 'bg-gray-50 text-gray-600 ring-gray-500/10 hover:bg-gray-100'
+              }`}>
+                <input
+                  type="checkbox"
+                  checked={onlyFreeTier}
+                  onChange={(event) => setOnlyFreeTier(event.target.checked)}
+                  className="h-4 w-4 rounded border-gray-300 text-emerald-600 focus:ring-emerald-500"
+                />
+                仅看免费额度
+              </label>
+
+              {PAYMENT_FILTERS.map((method) => {
+                const active = selectedPaymentMethods.includes(method.value);
+                return (
+                  <button
+                    key={method.value}
+                    type="button"
+                    onClick={() => togglePaymentMethod(method.value)}
+                    className={`rounded-lg px-3 py-2 text-sm font-semibold ring-1 ring-inset transition-colors ${
+                      active
+                        ? 'bg-blue-50 text-blue-700 ring-blue-600/20'
+                        : 'bg-gray-50 text-gray-600 ring-gray-500/10 hover:bg-gray-100'
+                    }`}
+                  >
+                    {method.label}
+                  </button>
+                );
+              })}
             </div>
           </div>
           
@@ -175,6 +214,8 @@ export default function HomeClient({ initialSites }: HomeClientProps) {
                 onClick={() => {
                   setSearchTerm('');
                   setActiveCategory('all');
+                  setSelectedPaymentMethods([]);
+                  setOnlyFreeTier(false);
                 }}
                 className="mt-6 text-sm font-medium text-indigo-600 hover:text-indigo-500"
               >

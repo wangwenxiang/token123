@@ -1,5 +1,12 @@
 import React, { useState } from 'react';
-import { Site, PriceTier } from '@/types';
+import type { Site, PriceTier } from '@/types';
+import {
+  getFreeTierLabel,
+  getMinRechargeLabel,
+  getPaymentMethodLabels,
+  getVerificationLabel,
+  isVerificationStale,
+} from '@/lib/siteDisplay';
 
 interface SiteCardProps {
   site: Site;
@@ -20,13 +27,25 @@ const MODEL_LABEL_CONFIG: Record<string, string> = {
   domestic: '国产',
 };
 
+const PAYMENT_ICON_CONFIG: Record<string, string> = {
+  Alipay: 'A',
+  Wechat: '微',
+  Crypto: '币',
+  Visa: '卡',
+};
+
 export default function SiteCard({ site, className = '' }: SiteCardProps) {
   const [imageError, setImageError] = useState(false);
   const domain = new URL(site.url).hostname;
   const logoUrl = `https://icon.horse/icon/${domain}`;
+  const paymentLabels = getPaymentMethodLabels(site.paymentMethods);
+  const freeTierLabel = getFreeTierLabel(site.hasFreeTier);
+  const minRechargeLabel = getMinRechargeLabel(site.minRecharge);
+  const verificationLabel = getVerificationLabel(site.lastVerified);
+  const staleVerification = isVerificationStale(site.lastVerified);
 
   return (
-    <div className={`group flex flex-col p-3 rounded-xl border border-gray-100 bg-white hover:shadow-md transition-shadow duration-200 h-full ${site.featured ? 'ring-1 ring-indigo-400/50' : ''} ${className}`}>
+    <div className={`group relative flex flex-col p-3 rounded-xl border border-gray-100 bg-white hover:shadow-md transition-shadow duration-200 h-full ${site.featured ? 'ring-1 ring-indigo-400/50' : ''} ${className}`}>
       
       {/* Featured Badge (Optional purely visual touch) */}
       {site.featured && (
@@ -82,6 +101,49 @@ export default function SiteCard({ site, className = '' }: SiteCardProps) {
       <p className="text-xs text-gray-500 mb-2 line-clamp-2 flex-1" title={site.description}>
         {site.description}
       </p>
+
+      {/* Trial decision signals */}
+      <div className="space-y-1.5 mb-2 text-xs">
+        <div className="flex flex-wrap gap-1">
+          {paymentLabels.map((label) => (
+            <span
+              key={label}
+              className={`inline-flex items-center gap-1 rounded-md px-1.5 py-0.5 font-medium ring-1 ring-inset ${
+                label === '支付方式未验证'
+                  ? 'bg-gray-50 text-gray-500 ring-gray-500/10'
+                  : 'bg-blue-50 text-blue-700 ring-blue-600/15'
+              }`}
+            >
+              {label !== '支付方式未验证' && (
+                <span className="inline-flex h-3.5 w-3.5 items-center justify-center rounded-sm bg-white/70 text-[10px] leading-none">
+                  {PAYMENT_ICON_CONFIG[label] || '付'}
+                </span>
+              )}
+              {label}
+            </span>
+          ))}
+        </div>
+
+        <div className="flex flex-wrap items-center gap-x-2 gap-y-1 text-gray-500">
+          <span>{minRechargeLabel}</span>
+          <span
+            className={`inline-flex rounded-md px-1.5 py-0.5 font-medium ${
+              site.hasFreeTier === true
+                ? 'bg-emerald-50 text-emerald-700 ring-1 ring-inset ring-emerald-600/20'
+                : site.hasFreeTier === null
+                  ? 'bg-gray-50 text-gray-500 ring-1 ring-inset ring-gray-500/10'
+                  : 'text-gray-500'
+            }`}
+          >
+            {freeTierLabel}
+          </span>
+        </div>
+
+        <div className={`flex flex-wrap items-center gap-1 ${staleVerification ? 'text-amber-700' : 'text-gray-400'}`}>
+          <span>{verificationLabel}</span>
+          {staleVerification && <span>信息可能过期</span>}
+        </div>
+      </div>
 
       {/* Footer / Action */}
       <div className="mt-auto pt-2 border-t border-gray-100/80">
