@@ -9,12 +9,12 @@ interface HomeClientProps {
 }
 
 const CATEGORIES = [
-  { label: '🔥 全部', value: 'all' },
+  { label: '全部', value: 'all' },
   { label: 'GPT', value: 'gpt' },
   { label: 'Claude', value: 'claude' },
   { label: 'Gemini', value: 'gemini' },
   { label: '多模型', value: 'multi' },
-  { label: '国产', value: 'domestic' },
+  { label: '国产模型', value: 'domestic' },
 ];
 
 export default function HomeClient({ initialSites }: HomeClientProps) {
@@ -60,7 +60,6 @@ export default function HomeClient({ initialSites }: HomeClientProps) {
       <div className="relative overflow-hidden bg-white border-b border-gray-100">
         {/* Decorative Background */}
         <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-[url('https://play.tailwindcss.com/img/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))] opacity-5"></div>
           <div className="absolute inset-y-0 right-1/2 -z-10 mr-16 w-[200%] origin-bottom-left skew-x-[-30deg] bg-white shadow-xl shadow-indigo-600/10 ring-1 ring-indigo-50 sm:mr-28 lg:mr-0 xl:mr-16 xl:origin-center"></div>
         </div>
 
