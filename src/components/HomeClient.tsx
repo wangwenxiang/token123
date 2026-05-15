@@ -55,21 +55,31 @@ export default function HomeClient({ initialSites }: HomeClientProps) {
 
       <main className="flex-1 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
 
-        {/* Featured Section — compact */}
-        <section className="-mx-4 sm:-mx-6 lg:-mx-8 mb-6 border-y border-indigo-100 bg-gradient-to-r from-indigo-50/80 via-blue-50/60 to-indigo-50/80 px-4 py-2 sm:px-6 lg:px-8">
-          <h2 className="text-sm font-bold text-gray-900 tracking-tight flex items-center gap-1.5 mb-2">
-            <span className="p-1 bg-indigo-100 rounded-md text-indigo-600">
-              <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
-              </svg>
-            </span>
-            精选推荐
-          </h2>
+        {/* Featured Strip — ultra compact */}
+        <section className="mb-6">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2">
             {featuredSites.map((site) => (
-              <div key={site.name} className="relative">
-                <SiteCard site={site} featured />
-              </div>
+              <a
+                key={site.name}
+                href={site.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex items-center gap-2.5 rounded-lg border border-indigo-100 bg-gradient-to-r from-indigo-50/60 to-white px-3 py-2 hover:shadow-sm hover:border-indigo-200 transition-all"
+              >
+                <div className="w-8 h-8 flex-shrink-0 rounded-lg shadow-sm border border-gray-200/80 flex items-center justify-center overflow-hidden bg-white">
+                  {site.logoPath ? (
+                    <img src={site.logoPath} alt="" className="w-5 h-5 object-contain" />
+                  ) : (
+                    <span className="w-full h-full flex items-center justify-center text-xs font-bold text-white bg-indigo-500">
+                      {site.name.charAt(0)}
+                    </span>
+                  )}
+                </div>
+                <div className="min-w-0 flex-1">
+                  <div className="text-xs font-bold text-gray-900 truncate">{site.name}</div>
+                  <div className="text-[10px] text-gray-500 truncate">{site.featuredReason || site.description}</div>
+                </div>
+              </a>
             ))}
           </div>
         </section>
