@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import { SiteListSchema, type Site } from '../src/types/index.ts';
-import { filterSites } from '../src/lib/siteFilters.ts';
+import { filterSites, getMainListSites } from '../src/lib/siteFilters.ts';
 import {
   getFreeTierLabel,
   getPaymentMethodLabels,
@@ -15,6 +15,7 @@ const baseSite: Site = {
   models: ['gpt'],
   priceTier: 'budget',
   featured: false,
+  featuredReason: null,
   paymentMethods: ['alipay'],
   minRecharge: '¥10',
   hasFreeTier: true,
@@ -37,6 +38,25 @@ test('SiteSchema parses trial decision fields and defaults unknown values conser
   assert.equal(parsed[0].minRecharge, null);
   assert.equal(parsed[0].hasFreeTier, null);
   assert.equal(parsed[0].lastVerified, null);
+});
+
+test('getMainListSites excludes featured sites from the main list', () => {
+  const sites: Site[] = [
+    {
+      ...baseSite,
+      name: 'Featured',
+      featured: true,
+      featuredReason: '推荐理由',
+    },
+    {
+      ...baseSite,
+      name: 'Regular',
+      featured: false,
+      featuredReason: null,
+    },
+  ];
+
+  assert.deepEqual(getMainListSites(sites).map((site) => site.name), ['Regular']);
 });
 
 test('filterSites only treats explicit free tier and explicit payment methods as matches', () => {

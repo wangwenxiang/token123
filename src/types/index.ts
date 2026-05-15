@@ -16,6 +16,7 @@ export const SiteSchema = z.object({
   models: z.array(ModelCategorySchema).min(1, 'At least one model category is required'),
   priceTier: PriceTierSchema,
   featured: z.boolean(),
+  featuredReason: z.string().nullable().default(null),
   paymentMethods: z.array(PaymentMethodSchema).default([]),
   minRecharge: z.string().nullable().default(null),
   hasFreeTier: z.boolean().nullable().default(null),

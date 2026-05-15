@@ -10,6 +10,7 @@ import {
 
 interface SiteCardProps {
   site: Site;
+  featured?: boolean;
   className?: string;
 }
 
@@ -34,8 +35,9 @@ const PAYMENT_ICON_CONFIG: Record<string, string> = {
   Visa: '卡',
 };
 
-export default function SiteCard({ site, className = '' }: SiteCardProps) {
+export default function SiteCard({ site, featured = false, className = '' }: SiteCardProps) {
   const [imageError, setImageError] = useState(false);
+  const isFeatured = featured || site.featured;
   const domain = new URL(site.url).hostname;
   const logoUrl = `https://icon.horse/icon/${domain}`;
   const paymentLabels = getPaymentMethodLabels(site.paymentMethods);
@@ -45,10 +47,14 @@ export default function SiteCard({ site, className = '' }: SiteCardProps) {
   const staleVerification = isVerificationStale(site.lastVerified);
 
   return (
-    <div className={`group relative flex flex-col p-3 rounded-xl border border-gray-100 bg-white hover:shadow-md transition-shadow duration-200 h-full ${site.featured ? 'ring-1 ring-indigo-400/50' : ''} ${className}`}>
+    <div className={`group relative flex flex-col rounded-xl border bg-white hover:shadow-md transition-shadow duration-200 h-full ${
+      isFeatured
+        ? 'p-4 border-indigo-100 shadow-sm ring-1 ring-indigo-400/40'
+        : 'p-3 border-gray-100'
+    } ${className}`}>
       
       {/* Featured Badge (Optional purely visual touch) */}
-      {site.featured && (
+      {isFeatured && (
         <div className="absolute top-0 right-6 -translate-y-1/2">
           <span className="inline-flex items-center rounded-full bg-indigo-100 px-2.5 py-0.5 text-xs font-semibold text-indigo-700 ring-1 ring-inset ring-indigo-600/20 shadow-sm">
             精选
@@ -102,6 +108,12 @@ export default function SiteCard({ site, className = '' }: SiteCardProps) {
         {site.description}
       </p>
 
+      {isFeatured && site.featuredReason && (
+        <div className="mb-2 rounded-md bg-indigo-50 px-2 py-1 text-xs font-medium text-indigo-700 ring-1 ring-inset ring-indigo-600/10">
+          推荐理由：{site.featuredReason}
+        </div>
+      )}
+
       {/* Trial decision signals */}
       <div className="space-y-1.5 mb-2 text-xs">
         <div className="flex flex-wrap gap-1">
@@ -144,6 +156,13 @@ export default function SiteCard({ site, className = '' }: SiteCardProps) {
           {staleVerification && <span>信息可能过期</span>}
         </div>
       </div>
+
+      {/* Featured Reason */}
+      {featured && site.featuredReason && (
+        <div className="mb-2 text-xs text-indigo-600/80 leading-relaxed">
+          {site.featuredReason}
+        </div>
+      )}
 
       {/* Footer / Action */}
       <div className="mt-auto pt-2 border-t border-gray-100/80">

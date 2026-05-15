@@ -42,3 +42,7 @@ export function filterSites(sites: Site[], options: SiteFilterOptions): Site[] {
 
   return result;
 }
+
+export function getMainListSites(sites: Site[]): Site[] {
+  return sites.filter((site) => !site.featured);
+}
