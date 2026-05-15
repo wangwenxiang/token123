@@ -120,30 +120,32 @@ export default function SiteCard({ site, featured = false, className = '' }: Sit
           </p>
         )}
 
-        {/* Trial signals */}
-        <div className="flex flex-wrap items-center gap-x-2 gap-y-0.5 text-[10px] text-gray-500 mb-1">
-          {paymentLabels.map((label) => (
-            <span key={label} className={label === '支付方式未验证' ? '' : 'text-blue-600'}>
-              {label}
-            </span>
-          ))}
-          <span>·</span>
-          <span>{minRechargeLabel}</span>
-          <span>·</span>
-          <span className={
-            site.hasFreeTier === true
-              ? 'text-emerald-600 font-medium'
-              : site.hasFreeTier === null
-                ? 'text-gray-400'
-                : ''
-          }>
-            {freeTierLabel}
-          </span>
-        </div>
+        {/* Trial signals — only show when data exists */}
+        {paymentLabels.length > 0 && (
+          <div className="flex flex-wrap items-center gap-x-1.5 gap-y-0.5 text-[10px] text-gray-500 mb-0.5">
+            {paymentLabels.map((label) => (
+              <span key={label} className="text-blue-600">{label}</span>
+            ))}
+            {minRechargeLabel && (
+              <>
+                <span>·</span>
+                <span>{minRechargeLabel}</span>
+              </>
+            )}
+            {freeTierLabel && (
+              <>
+                <span>·</span>
+                <span className="text-emerald-600 font-medium">{freeTierLabel}</span>
+              </>
+            )}
+          </div>
+        )}
 
-        <div className={`text-[10px] ${staleVerification ? 'text-amber-600' : 'text-gray-400'}`}>
-          {verificationLabel}
-        </div>
+        {verificationLabel && (
+          <div className={`text-[10px] ${staleVerification ? 'text-amber-600' : 'text-gray-400'}`}>
+            {verificationLabel}
+          </div>
+        )}
       </div>
 
       {/* Visit button — right edge */}

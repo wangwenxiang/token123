@@ -4,6 +4,7 @@ import { SiteListSchema, type Site } from '../src/types/index.ts';
 import { filterSites, getMainListSites } from '../src/lib/siteFilters.ts';
 import {
   getFreeTierLabel,
+  getMinRechargeLabel,
   getPaymentMethodLabels,
   getVerificationLabel,
 } from '../src/lib/siteDisplay.ts';
@@ -97,9 +98,10 @@ test('filterSites only treats explicit free tier and explicit payment methods as
   );
 });
 
-test('display helpers expose unknown payment, free tier, and verification states', () => {
-  assert.deepEqual(getPaymentMethodLabels([]), ['支付方式未验证']);
-  assert.equal(getFreeTierLabel(null), '免费额度未验证');
+test('display helpers omit unknown payment and recharge values from card content', () => {
+  assert.deepEqual(getPaymentMethodLabels([]), []);
+  assert.equal(getMinRechargeLabel(null), null);
+  assert.equal(getFreeTierLabel(null), null);
   assert.equal(getFreeTierLabel(false), '无免费额度');
   assert.equal(getFreeTierLabel(true), '免费试用');
   assert.equal(getVerificationLabel(null), '未核验');
