@@ -101,9 +101,11 @@ test('filterSites only treats explicit free tier and explicit payment methods as
 test('display helpers omit unknown payment and recharge values from card content', () => {
   assert.deepEqual(getPaymentMethodLabels([]), []);
   assert.equal(getMinRechargeLabel(null), null);
+  assert.equal(getMinRechargeLabel('未知'), null);
+  assert.equal(getMinRechargeLabel('¥10'), '¥10 起');
   assert.equal(getFreeTierLabel(null), null);
   assert.equal(getFreeTierLabel(false), '无免费额度');
   assert.equal(getFreeTierLabel(true), '免费试用');
-  assert.equal(getVerificationLabel(null), '未核验');
+  assert.equal(getVerificationLabel(null), null);
   assert.equal(getVerificationLabel('2026-05-14'), '核验：2026-05-14');
 });

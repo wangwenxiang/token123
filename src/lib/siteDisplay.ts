@@ -14,27 +14,30 @@ export function getPaymentMethodLabels(paymentMethods: PaymentMethod[]): string[
   return paymentMethods.map((method) => PAYMENT_METHOD_LABELS[method]);
 }
 
-export function getMinRechargeLabel(minRecharge: string | null): string {
+export function getMinRechargeLabel(minRecharge: string | null): string | null {
   if (!minRecharge) {
-    return '';
+    return null;
   }
   const value = minRecharge.trim();
   if (!value || value === '未知') {
-    return '';
+    return null;
   }
   return value.endsWith('起') || value === '免费' ? value : `${value} 起`;
 }
 
-export function getFreeTierLabel(hasFreeTier: boolean | null): string {
+export function getFreeTierLabel(hasFreeTier: boolean | null): string | null {
   if (hasFreeTier === true) {
     return '免费试用';
   }
-  return '';
+  if (hasFreeTier === false) {
+    return '无免费额度';
+  }
+  return null;
 }
 
-export function getVerificationLabel(lastVerified: string | null): string {
+export function getVerificationLabel(lastVerified: string | null): string | null {
   if (!lastVerified) {
-    return '';
+    return null;
   }
   return `核验：${lastVerified}`;
 }

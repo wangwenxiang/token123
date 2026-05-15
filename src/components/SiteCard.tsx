@@ -49,6 +49,23 @@ export default function SiteCard({ site, featured = false, className = '' }: Sit
   const minRechargeLabel = getMinRechargeLabel(site.minRecharge);
   const verificationLabel = getVerificationLabel(site.lastVerified);
   const staleVerification = isVerificationStale(site.lastVerified);
+  const trialSignals = [
+    ...paymentLabels.map((label) => ({
+      key: `payment-${label}`,
+      label,
+      className: 'text-blue-600',
+    })),
+    ...(minRechargeLabel
+      ? [{ key: 'min-recharge', label: minRechargeLabel, className: '' }]
+      : []),
+    ...(freeTierLabel
+      ? [{
+          key: 'free-tier',
+          label: freeTierLabel,
+          className: site.hasFreeTier === true ? 'text-emerald-600 font-medium' : '',
+        }]
+      : []),
+  ];
 
   return (
     <div className={`group relative flex rounded-xl border bg-white hover:shadow-md transition-shadow duration-200 ${
@@ -121,23 +138,14 @@ export default function SiteCard({ site, featured = false, className = '' }: Sit
         )}
 
         {/* Trial signals — only show when data exists */}
-        {paymentLabels.length > 0 && (
+        {trialSignals.length > 0 && (
           <div className="flex flex-wrap items-center gap-x-1.5 gap-y-0.5 text-[10px] text-gray-500 mb-0.5">
-            {paymentLabels.map((label) => (
-              <span key={label} className="text-blue-600">{label}</span>
+            {trialSignals.map((signal, index) => (
+              <React.Fragment key={signal.key}>
+                {index > 0 && <span className="text-gray-300">·</span>}
+                <span className={signal.className}>{signal.label}</span>
+              </React.Fragment>
             ))}
-            {minRechargeLabel && (
-              <>
-                <span>·</span>
-                <span>{minRechargeLabel}</span>
-              </>
-            )}
-            {freeTierLabel && (
-              <>
-                <span>·</span>
-                <span className="text-emerald-600 font-medium">{freeTierLabel}</span>
-              </>
-            )}
           </div>
         )}
 
