@@ -17,6 +17,7 @@ export const SiteSchema = z.object({
   priceTier: PriceTierSchema,
   featured: z.boolean(),
   featuredReason: z.string().nullable().default(null),
+  logoPath: z.string().nullable().default(null),
   paymentMethods: z.array(PaymentMethodSchema).default([]),
   minRecharge: z.string().nullable().default(null),
   hasFreeTier: z.boolean().nullable().default(null),

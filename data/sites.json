@@ -19,7 +19,8 @@
     "minRecharge": "无最低消费",
     "hasFreeTier": true,
     "lastVerified": "2026-05-14",
-    "featuredReason": "模型最全的老牌网关，全球500万+开发者使用"
+    "featuredReason": "模型最全的老牌网关，全球500万+开发者使用",
+    "logoPath": "/logos/OpenRouter.ico"
   },
   {
     "name": "302.AI",
@@ -40,7 +41,8 @@
     "minRecharge": null,
     "hasFreeTier": null,
     "lastVerified": "2026-05-14",
-    "featuredReason": "按量付费模型商店，Claude/GPT/Gemini全覆盖"
+    "featuredReason": "按量付费模型商店，Claude/GPT/Gemini全覆盖",
+    "logoPath": "/logos/302.AI.ico"
   },
   {
     "name": "AiHubMix",
@@ -63,7 +65,8 @@
     "minRecharge": null,
     "hasFreeTier": true,
     "lastVerified": "2026-05-14",
-    "featuredReason": "200+模型统一低价接口，支持支付宝微信"
+    "featuredReason": "200+模型统一低价接口，支持支付宝微信",
+    "logoPath": "/logos/AiHubMix.ico"
   },
   {
     "name": "YesCode",
@@ -80,7 +83,8 @@
     "minRecharge": null,
     "hasFreeTier": null,
     "lastVerified": "2026-05-14",
-    "featuredReason": "编程Agent专用路由，Claude Code零成本试用"
+    "featuredReason": "编程Agent专用路由，Claude Code零成本试用",
+    "logoPath": "/logos/YesCode.ico"
   },
   {
     "name": "API2D",
@@ -99,7 +103,8 @@
     "minRecharge": "¥10",
     "hasFreeTier": true,
     "lastVerified": "2026-05-14",
-    "featuredReason": null
+    "featuredReason": null,
+    "logoPath": "/logos/API2D.ico"
   },
   {
     "name": "CloseAI",
@@ -119,7 +124,8 @@
     "minRecharge": null,
     "hasFreeTier": null,
     "lastVerified": "2026-05-14",
-    "featuredReason": null
+    "featuredReason": null,
+    "logoPath": "/logos/CloseAI.ico"
   },
   {
     "name": "ChatAnywhere",
@@ -135,7 +141,8 @@
     "minRecharge": "免费",
     "hasFreeTier": true,
     "lastVerified": "2026-05-14",
-    "featuredReason": null
+    "featuredReason": null,
+    "logoPath": "/logos/ChatAnywhere.ico"
   },
   {
     "name": "UIUIAPI",
@@ -154,7 +161,8 @@
     "minRecharge": null,
     "hasFreeTier": null,
     "lastVerified": "2026-05-14",
-    "featuredReason": null
+    "featuredReason": null,
+    "logoPath": "/logos/UIUIAPI.ico"
   },
   {
     "name": "FuhuAPI",
@@ -176,7 +184,8 @@
     "minRecharge": "$1",
     "hasFreeTier": null,
     "lastVerified": "2026-05-14",
-    "featuredReason": null
+    "featuredReason": null,
+    "logoPath": "/logos/FuhuAPI.ico"
   },
   {
     "name": "UnifyLLM",
@@ -195,7 +204,8 @@
     "minRecharge": null,
     "hasFreeTier": true,
     "lastVerified": "2026-05-14",
-    "featuredReason": null
+    "featuredReason": null,
+    "logoPath": "/logos/UnifyLLM.ico"
   },
   {
     "name": "PatewayAI",
@@ -213,7 +223,8 @@
     "minRecharge": "$1",
     "hasFreeTier": true,
     "lastVerified": "2026-05-14",
-    "featuredReason": null
+    "featuredReason": null,
+    "logoPath": "/logos/PatewayAI.ico"
   },
   {
     "name": "Gotoken",
@@ -235,7 +246,8 @@
     "minRecharge": null,
     "hasFreeTier": null,
     "lastVerified": "2026-05-14",
-    "featuredReason": null
+    "featuredReason": null,
+    "logoPath": "/logos/Gotoken.ico"
   },
   {
     "name": "MixRoute",
@@ -254,7 +266,8 @@
     "minRecharge": null,
     "hasFreeTier": null,
     "lastVerified": "2026-05-14",
-    "featuredReason": null
+    "featuredReason": null,
+    "logoPath": "/logos/MixRoute.ico"
   },
   {
     "name": "API.shop",
@@ -273,7 +286,8 @@
     "minRecharge": null,
     "hasFreeTier": null,
     "lastVerified": "2026-05-14",
-    "featuredReason": null
+    "featuredReason": null,
+    "logoPath": "/logos/API.shop.ico"
   },
   {
     "name": "n1n.ai",
@@ -296,7 +310,8 @@
     "minRecharge": "¥1",
     "hasFreeTier": true,
     "lastVerified": "2026-05-14",
-    "featuredReason": null
+    "featuredReason": null,
+    "logoPath": "/logos/n1n.ai.ico"
   },
   {
     "name": "LingyaAI",
@@ -315,7 +330,8 @@
     "minRecharge": null,
     "hasFreeTier": null,
     "lastVerified": "2026-05-14",
-    "featuredReason": null
+    "featuredReason": null,
+    "logoPath": "/logos/LingyaAI.ico"
   },
   {
     "name": "转发站",
@@ -333,6 +349,7 @@
     "minRecharge": null,
     "hasFreeTier": null,
     "lastVerified": "2026-05-14",
-    "featuredReason": null
+    "featuredReason": null,
+    "logoPath": "/logos/转发站.ico"
   }
 ]
