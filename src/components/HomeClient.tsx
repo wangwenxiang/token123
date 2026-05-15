@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useMemo } from 'react';
-import type { PaymentMethod, Site } from '@/types';
+import type { Site } from '@/types';
 import SiteCard from './SiteCard';
 import { filterSites, getMainListSites } from '@/lib/siteFilters';
 
@@ -15,18 +15,10 @@ const CATEGORIES = [
   { label: 'Claude', value: 'claude' },
   { label: 'Gemini', value: 'gemini' },
   { label: '多模型', value: 'multi' },
-  { label: '国产模型', value: 'domestic' },
-];
-
-const PAYMENT_FILTERS: { label: string; value: PaymentMethod }[] = [
-  { label: '支付宝', value: 'alipay' },
-  { label: '微信', value: 'wechat' },
 ];
 
 export default function HomeClient({ initialSites }: HomeClientProps) {
   const [activeCategory, setActiveCategory] = useState('all');
-  const [selectedPaymentMethods, setSelectedPaymentMethods] = useState<PaymentMethod[]>([]);
-  const [onlyFreeTier, setOnlyFreeTier] = useState(false);
 
   const featuredSites = useMemo(() => {
     return initialSites.filter((site) => site.featured);
@@ -38,19 +30,11 @@ export default function HomeClient({ initialSites }: HomeClientProps) {
       {
         category: activeCategory,
         searchTerm: '',
-        paymentMethods: selectedPaymentMethods,
-        onlyFreeTier,
+        paymentMethods: [],
+        onlyFreeTier: false,
       },
     );
-  }, [initialSites, activeCategory, selectedPaymentMethods, onlyFreeTier]);
-
-  const togglePaymentMethod = (method: PaymentMethod) => {
-    setSelectedPaymentMethods((current) =>
-      current.includes(method)
-        ? current.filter((item) => item !== method)
-        : [...current, method],
-    );
-  };
+  }, [initialSites, activeCategory]);
 
   return (
     <div className="flex flex-col min-h-screen bg-white selection:bg-indigo-100 selection:text-indigo-900">
@@ -119,39 +103,6 @@ export default function HomeClient({ initialSites }: HomeClientProps) {
               ))}
             </div>
 
-            <div className="flex flex-wrap items-center gap-2">
-              <label className={`inline-flex cursor-pointer items-center gap-1.5 rounded-lg px-2.5 py-1.5 text-xs font-semibold ring-1 ring-inset transition-colors ${
-                onlyFreeTier
-                  ? 'bg-emerald-50 text-emerald-700 ring-emerald-600/20'
-                  : 'bg-gray-50 text-gray-600 ring-gray-500/10 hover:bg-gray-100'
-              }`}>
-                <input
-                  type="checkbox"
-                  checked={onlyFreeTier}
-                  onChange={(event) => setOnlyFreeTier(event.target.checked)}
-                  className="h-3.5 w-3.5 rounded border-gray-300 text-emerald-600 focus:ring-emerald-500"
-                />
-                仅看免费额度
-              </label>
-
-              {PAYMENT_FILTERS.map((method) => {
-                const active = selectedPaymentMethods.includes(method.value);
-                return (
-                  <button
-                    key={method.value}
-                    type="button"
-                    onClick={() => togglePaymentMethod(method.value)}
-                    className={`rounded-lg px-2.5 py-1.5 text-xs font-semibold ring-1 ring-inset transition-colors ${
-                      active
-                        ? 'bg-blue-50 text-blue-700 ring-blue-600/20'
-                        : 'bg-gray-50 text-gray-600 ring-gray-500/10 hover:bg-gray-100'
-                    }`}
-                  >
-                    {method.label}
-                  </button>
-                );
-              })}
-            </div>
           </div>
 
           {/* Mobile Category Dropdown */}

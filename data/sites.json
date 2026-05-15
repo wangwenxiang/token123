@@ -165,29 +165,6 @@
     "logoPath": "/logos/UIUIAPI.ico"
   },
   {
-    "name": "FuhuAPI",
-    "url": "https://fuhuapi.com/",
-    "description": "全网大模型聚合",
-    "models": [
-      "gpt",
-      "claude",
-      "gemini",
-      "multi",
-      "domestic"
-    ],
-    "priceTier": "budget",
-    "featured": false,
-    "paymentMethods": [
-      "alipay",
-      "wechat"
-    ],
-    "minRecharge": "$1",
-    "hasFreeTier": null,
-    "lastVerified": "2026-05-14",
-    "featuredReason": null,
-    "logoPath": "/logos/FuhuAPI.ico"
-  },
-  {
     "name": "UnifyLLM",
     "url": "https://www.unifyllm.com/",
     "description": "企业级LLM中转",
