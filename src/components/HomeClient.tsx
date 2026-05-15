@@ -143,14 +143,10 @@ export default function HomeClient({ initialSites }: HomeClientProps) {
               <h3 className="text-base font-medium text-gray-900 mb-1">未找到相关中转站</h3>
               <p className="text-sm text-gray-500">尝试切换分类或调整筛选条件</p>
               <button
-                onClick={() => {
-                  setActiveCategory('all');
-                  setSelectedPaymentMethods([]);
-                  setOnlyFreeTier(false);
-                }}
+                onClick={() => setActiveCategory('all')}
                 className="mt-4 text-sm font-medium text-indigo-600 hover:text-indigo-500"
               >
-                清除所有过滤条件 &rarr;
+                查看全部站点 &rarr;
               </button>
             </div>
           )}
