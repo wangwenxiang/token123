@@ -157,13 +157,6 @@ export default function SiteCard({ site, featured = false, className = '' }: Sit
         </div>
       </div>
 
-      {/* Featured Reason */}
-      {featured && site.featuredReason && (
-        <div className="mb-2 text-xs text-indigo-600/80 leading-relaxed">
-          {site.featuredReason}
-        </div>
-      )}
-
       {/* Footer / Action */}
       <div className="mt-auto pt-2 border-t border-gray-100/80">
         <a
