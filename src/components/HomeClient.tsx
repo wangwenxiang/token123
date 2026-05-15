@@ -37,16 +37,16 @@ export default function HomeClient({ initialSites }: HomeClientProps) {
   }, [initialSites, activeCategory]);
 
   return (
-    <div className="flex flex-col min-h-screen bg-white selection:bg-indigo-100 selection:text-indigo-900">
+    <div className="flex flex-col min-h-screen bg-gradient-to-b from-indigo-50/30 via-white to-white selection:bg-indigo-100 selection:text-indigo-900">
 
       {/* Compact Hero Section */}
-      <div className="bg-white border-b border-gray-100">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-6 pb-4">
+      <div className="bg-gradient-to-r from-indigo-50/50 via-white to-blue-50/50 border-b border-indigo-100">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-5 pb-3">
           <div className="text-center max-w-3xl mx-auto">
-            <h1 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-gray-900 mb-1">
+            <h1 className="text-xl sm:text-2xl lg:text-3xl font-extrabold tracking-tight text-gray-900 mb-0.5">
               AI Token 中转站<span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">导航</span>
             </h1>
-            <p className="text-sm text-gray-500">
+            <p className="text-xs text-gray-500">
               汇集优质 API 中转服务，快速对比价格与支持模型
             </p>
           </div>
@@ -55,22 +55,17 @@ export default function HomeClient({ initialSites }: HomeClientProps) {
 
       <main className="flex-1 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
 
-        {/* Featured Section — visually separated */}
-        <section className="-mx-4 sm:-mx-6 lg:-mx-8 mb-6 border-y border-gray-200 bg-gray-50 px-4 py-5 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between mb-4">
-            <div>
-              <h2 className="text-lg font-bold text-gray-900 tracking-tight flex items-center gap-2">
-                <span className="p-1.5 bg-indigo-100 rounded-lg text-indigo-600">
-                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
-                  </svg>
-                </span>
-                精选推荐
-              </h2>
-              <p className="text-xs text-gray-500 mt-1">以下站点覆盖面广、支付方便，适合新手先试</p>
-            </div>
-          </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+        {/* Featured Section — compact */}
+        <section className="-mx-4 sm:-mx-6 lg:-mx-8 mb-6 border-y border-indigo-100 bg-gradient-to-r from-indigo-50/80 via-blue-50/60 to-indigo-50/80 px-4 py-2 sm:px-6 lg:px-8">
+          <h2 className="text-sm font-bold text-gray-900 tracking-tight flex items-center gap-1.5 mb-2">
+            <span className="p-1 bg-indigo-100 rounded-md text-indigo-600">
+              <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+              </svg>
+            </span>
+            精选推荐
+          </h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2">
             {featuredSites.map((site) => (
               <div key={site.name} className="relative">
                 <SiteCard site={site} featured />
