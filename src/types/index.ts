@@ -27,3 +27,42 @@ export const SiteSchema = z.object({
 export type Site = z.infer<typeof SiteSchema>;
 
 export const SiteListSchema = z.array(SiteSchema);
+
+export const EvidenceLevelSchema = z.enum([
+  'model_pricing',
+  'billing_public',
+  'free_trial',
+  'community_channel',
+]);
+export type EvidenceLevel = z.infer<typeof EvidenceLevelSchema>;
+
+export const RankingScoresSchema = z.object({
+  price: z.number().min(0).max(10),
+  reliability: z.number().min(0).max(10),
+  coverage: z.number().min(0).max(10),
+  transparency: z.number().min(0).max(10),
+  chinaFriendly: z.number().min(0).max(10),
+});
+export type RankingScores = z.infer<typeof RankingScoresSchema>;
+export const ScoresSchema = RankingScoresSchema;
+export type Scores = RankingScores;
+
+export const RankingItemSchema = z.object({
+  id: z.string().min(1),
+  name: z.string().min(1),
+  url: z.string().url(),
+  rank: z.number().int().positive().nullable(),
+  score: z.number().min(0).max(100).nullable(),
+  evidenceLevel: EvidenceLevelSchema,
+  positioning: z.string().min(1),
+  priceHighlight: z.string().min(1),
+  riskNote: z.string().min(1),
+  evidenceUrl: z.string().url().nullable(),
+  verifiedAt: z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
+  scores: RankingScoresSchema.nullable(),
+  logoPath: z.string().nullable().default(null),
+  participatesInMainRanking: z.boolean(),
+});
+export type RankingItem = z.infer<typeof RankingItemSchema>;
+
+export const RankingListSchema = z.array(RankingItemSchema);

@@ -14,8 +14,8 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "token123.xyz - AI Token 中转站导航",
-  description: "聚合主流AI中转站，帮助开发者一眼识别关键信息，快速跳转合适的服务。精选高性价比、稳定可靠的 GPT/Claude/Gemini API 代理服务。",
+  title: "token123.xyz - AI Token 中转站权威榜单",
+  description: "按价格、可靠性和透明度综合排序，帮助开发者基于可核实证据判断 AI Token 中转站的当前推荐价值。",
 };
 
 export default function RootLayout({
@@ -29,14 +29,12 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-gray-50 min-h-screen flex flex-col`}
       >
         {children}
-        {/* 固定页脚：免责声明 */}
         <footer className="mt-auto bg-white border-t border-gray-200 py-6">
           <div className="max-w-7xl mx-auto px-4 text-center text-sm text-gray-500">
-            免责声明：本站收录的中转站均为第三方服务，本站不对其质量和安全性负责，请开发者自行甄别风险。
+            免责声明：榜单基于公开证据与当前核验口径整理，不构成购买建议；第三方服务质量、安全性和价格变化请自行复核。
           </div>
         </footer>
       </body>
     </html>
   );
 }
-

@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { SiteListSchema, type Site } from '../src/types/index.ts';
+import { RankingListSchema, SiteListSchema, type Site } from '../src/types/index.ts';
+import rankingData from '../data/ranking.json' with { type: 'json' };
 import { filterSites, getMainListSites } from '../src/lib/siteFilters.ts';
 import {
   getFreeTierLabel,
@@ -108,4 +109,32 @@ test('display helpers omit unknown payment and recharge values from card content
   assert.equal(getFreeTierLabel(true), '免费试用');
   assert.equal(getVerificationLabel(null), null);
   assert.equal(getVerificationLabel('2026-05-14'), '核验：2026-05-14');
+});
+
+test('ranking data keeps verified main list and community entries separated', () => {
+  const rankings = RankingListSchema.parse(rankingData);
+  const mainRankings = rankings.filter((item) => item.participatesInMainRanking);
+  const communityEntries = rankings.filter((item) => !item.participatesInMainRanking);
+
+  assert.deepEqual(
+    mainRankings.map((item) => item.name),
+    [
+      'PatewayAI',
+      'OpenRouter',
+      'MixRoute',
+      '302.AI',
+      'n1n.ai',
+      'AIHubMix',
+      'CloseAI',
+      'UIUIAPI',
+      'API2D',
+      'ChatAnywhere',
+    ],
+  );
+  assert.equal(mainRankings.every((item) => item.verifiedAt === '2026-05-18'), true);
+  assert.equal(mainRankings.every((item) => item.rank !== null && item.score !== null && item.scores !== null), true);
+  assert.deepEqual(
+    communityEntries.map((item) => [item.name, item.rank, item.score, item.scores, item.evidenceLevel]),
+    [['转发站', null, null, null, 'community_channel']],
+  );
 });
