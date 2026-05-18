@@ -1,10 +1,9 @@
 'use client';
 
 import React, { useMemo, useState } from 'react';
-import type { EvidenceLevel, RankingItem, RankingScores, Site } from '@/types';
+import type { EvidenceLevel, RankingItem, RankingScores } from '@/types';
 
 interface HomeClientProps {
-  initialSites: Site[];
   rankings: RankingItem[];
 }
 

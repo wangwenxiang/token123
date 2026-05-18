@@ -34,11 +34,11 @@
     "evidenceUrl": "https://openrouter.ai/models",
     "verifiedAt": "2026-05-18",
     "scores": {
-      "price": 6,
-      "reliability": 9,
+      "price": 5,
+      "reliability": 8,
       "coverage": 10,
       "transparency": 9,
-      "chinaFriendly": 3
+      "chinaFriendly": 3.5
     },
     "logoPath": "/logos/OpenRouter.ico",
     "participatesInMainRanking": true
@@ -56,11 +56,11 @@
     "evidenceUrl": "https://mixroute.ai/",
     "verifiedAt": "2026-05-18",
     "scores": {
-      "price": 8,
+      "price": 7,
       "reliability": 7,
       "coverage": 7,
       "transparency": 6,
-      "chinaFriendly": 8
+      "chinaFriendly": 6.5
     },
     "logoPath": "/logos/MixRoute.ico",
     "participatesInMainRanking": true
@@ -79,10 +79,10 @@
     "verifiedAt": "2026-05-18",
     "scores": {
       "price": 7,
-      "reliability": 8,
-      "coverage": 9,
-      "transparency": 7,
-      "chinaFriendly": 9
+      "reliability": 7,
+      "coverage": 8,
+      "transparency": 6,
+      "chinaFriendly": 8.5
     },
     "logoPath": "/logos/302.AI.ico",
     "participatesInMainRanking": true
@@ -100,11 +100,11 @@
     "evidenceUrl": "https://docs.n1n.ai/en",
     "verifiedAt": "2026-05-18",
     "scores": {
-      "price": 9,
+      "price": 8,
       "reliability": 6,
       "coverage": 8,
       "transparency": 5,
-      "chinaFriendly": 8
+      "chinaFriendly": 6.5
     },
     "logoPath": "/logos/n1n.ai.ico",
     "participatesInMainRanking": true
@@ -124,9 +124,9 @@
     "scores": {
       "price": 7,
       "reliability": 7,
-      "coverage": 9,
-      "transparency": 6,
-      "chinaFriendly": 9
+      "coverage": 8,
+      "transparency": 5,
+      "chinaFriendly": 7
     },
     "logoPath": "/logos/AiHubMix.ico",
     "participatesInMainRanking": true
@@ -145,10 +145,10 @@
     "verifiedAt": "2026-05-18",
     "scores": {
       "price": 5,
-      "reliability": 8,
-      "coverage": 7,
-      "transparency": 7,
-      "chinaFriendly": 8
+      "reliability": 7,
+      "coverage": 6,
+      "transparency": 6,
+      "chinaFriendly": 10
     },
     "logoPath": "/logos/CloseAI.ico",
     "participatesInMainRanking": true
@@ -168,9 +168,9 @@
     "scores": {
       "price": 7,
       "reliability": 6,
-      "coverage": 8,
+      "coverage": 7,
       "transparency": 4,
-      "chinaFriendly": 8
+      "chinaFriendly": 6.5
     },
     "logoPath": "/logos/UIUIAPI.ico",
     "participatesInMainRanking": true
@@ -188,8 +188,8 @@
     "evidenceUrl": "https://api2d.com/wiki/doc",
     "verifiedAt": "2026-05-18",
     "scores": {
-      "price": 3,
-      "reliability": 7,
+      "price": 2,
+      "reliability": 6,
       "coverage": 5,
       "transparency": 5,
       "chinaFriendly": 7
@@ -210,11 +210,11 @@
     "evidenceUrl": "https://chatanywhere.tech/",
     "verifiedAt": "2026-05-18",
     "scores": {
-      "price": 4,
+      "price": 5,
       "reliability": 5,
       "coverage": 4,
-      "transparency": 4,
-      "chinaFriendly": 8
+      "transparency": 5,
+      "chinaFriendly": 7
     },
     "logoPath": "/logos/ChatAnywhere.ico",
     "participatesInMainRanking": true

@@ -10,6 +10,20 @@ import {
   getVerificationLabel,
 } from '../src/lib/siteDisplay.ts';
 
+const calculateCompositeScore = (scores: {
+  price: number;
+  reliability: number;
+  coverage: number;
+  transparency: number;
+  chinaFriendly: number;
+}) => (
+  scores.price * 0.35
+  + scores.reliability * 0.3
+  + scores.coverage * 0.15
+  + scores.transparency * 0.1
+  + scores.chinaFriendly * 0.1
+) * 10;
+
 const baseSite: Site = {
   name: 'Alpha',
   url: 'https://alpha.example.com',
@@ -133,6 +147,14 @@ test('ranking data keeps verified main list and community entries separated', ()
   );
   assert.equal(mainRankings.every((item) => item.verifiedAt === '2026-05-18'), true);
   assert.equal(mainRankings.every((item) => item.rank !== null && item.score !== null && item.scores !== null), true);
+  assert.equal(
+    mainRankings.every((item) => (
+      item.scores !== null
+      && item.score !== null
+      && Math.abs(calculateCompositeScore(item.scores) - item.score) < 0.001
+    )),
+    true,
+  );
   assert.deepEqual(
     communityEntries.map((item) => [item.name, item.rank, item.score, item.scores, item.evidenceLevel]),
     [['转发站', null, null, null, 'community_channel']],
