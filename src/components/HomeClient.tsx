@@ -85,6 +85,34 @@ function RankingLogo({ item }: { item: RankingItem }) {
   );
 }
 
+function podiumStyle(rank: number | null) {
+  if (rank === 1) {
+    return {
+      article: 'border-amber-300 bg-amber-50/60 shadow-[0_12px_40px_rgba(245,158,11,0.14)]',
+      rank: 'bg-amber-400 text-amber-950 ring-2 ring-amber-200',
+      label: '金牌低价首选',
+      labelClass: 'bg-amber-100 text-amber-800 ring-amber-500/20',
+    };
+  }
+  if (rank === 2) {
+    return {
+      article: 'border-slate-300 bg-slate-50/80 shadow-[0_10px_32px_rgba(100,116,139,0.12)]',
+      rank: 'bg-slate-300 text-slate-950 ring-2 ring-slate-200',
+      label: '银牌稳定优选',
+      labelClass: 'bg-slate-100 text-slate-700 ring-slate-500/20',
+    };
+  }
+  if (rank === 3) {
+    return {
+      article: 'border-orange-300 bg-orange-50/60 shadow-[0_10px_32px_rgba(249,115,22,0.12)]',
+      rank: 'bg-orange-300 text-orange-950 ring-2 ring-orange-200',
+      label: '铜牌短期划算',
+      labelClass: 'bg-orange-100 text-orange-800 ring-orange-500/20',
+    };
+  }
+  return null;
+}
+
 export default function HomeClient({ rankings }: HomeClientProps) {
   const [expandedId, setExpandedId] = useState<string | null>(null);
 
@@ -92,7 +120,6 @@ export default function HomeClient({ rankings }: HomeClientProps) {
     () => rankings.filter((item) => item.participatesInMainRanking),
     [rankings],
   );
-  const topThree = mainRankings.slice(0, 3);
   const communityEntry = rankings.find((item) => item.evidenceLevel === 'community_channel');
 
   return (
@@ -114,40 +141,6 @@ export default function HomeClient({ rankings }: HomeClientProps) {
       </header>
 
       <main className="mx-auto w-full max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
-        <section className="mb-6">
-          <div className="mb-3 flex items-end justify-between gap-3">
-            <div>
-              <h2 className="text-base font-bold text-gray-950">Top 3 当前推荐</h2>
-              <p className="mt-1 text-xs text-gray-500">先看最值得试的三个入口，再看完整评分依据。</p>
-            </div>
-            <span className="hidden rounded-full bg-white px-3 py-1 text-xs text-gray-500 ring-1 ring-gray-200 sm:inline-flex">
-              核验日期：2026-05-18
-            </span>
-          </div>
-
-          <div className="grid gap-3 lg:grid-cols-3">
-            {topThree.map((item) => (
-              <a
-                key={item.id}
-                href={item.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group flex min-h-[104px] gap-3 rounded-xl border border-indigo-100 bg-white p-3 shadow-sm transition hover:-translate-y-0.5 hover:border-indigo-200 hover:shadow-md"
-              >
-                <RankingLogo item={item} />
-                <div className="min-w-0 flex-1">
-                  <div className="flex items-center gap-2">
-                    <span className="text-xs font-bold text-indigo-600">#{item.rank}</span>
-                    <h3 className="truncate text-sm font-bold text-gray-950">{item.name}</h3>
-                  </div>
-                  <p className="mt-1 text-xs font-semibold text-gray-700">{item.positioning}</p>
-                  <p className="mt-1 line-clamp-2 text-[11px] leading-4 text-gray-500">{item.priceHighlight}</p>
-                </div>
-              </a>
-            ))}
-          </div>
-        </section>
-
         <section className="mb-6 rounded-xl border border-slate-200 bg-white p-4">
           <div className="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
             <div>
@@ -176,12 +169,18 @@ export default function HomeClient({ rankings }: HomeClientProps) {
           <div className="divide-y divide-slate-100">
             {mainRankings.map((item) => {
               const expanded = expandedId === item.id;
+              const podium = podiumStyle(item.rank);
 
               return (
-                <article key={item.id} className="p-4">
+                <article
+                  key={item.id}
+                  className={`relative p-4 transition ${podium ? `border-l-4 ${podium.article}` : ''}`}
+                >
                   <div className="grid gap-3 lg:grid-cols-[56px_minmax(160px,1.1fr)_92px_132px_minmax(180px,1fr)_minmax(180px,1fr)_112px_96px] lg:items-center">
                     <div className="flex items-center gap-3 lg:block">
-                      <span className="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-slate-100 text-sm font-extrabold text-gray-700">
+                      <span
+                        className={`inline-flex h-9 w-9 items-center justify-center rounded-lg text-sm font-extrabold ${podium ? podium.rank : 'bg-slate-100 text-gray-700'}`}
+                      >
                         {item.rank}
                       </span>
                       <div className="lg:hidden">
@@ -193,7 +192,16 @@ export default function HomeClient({ rankings }: HomeClientProps) {
                       <RankingLogo item={item} />
                       <div className="min-w-0">
                         <h3 className="truncate text-sm font-bold text-gray-950">{item.name}</h3>
-                        <p className="truncate text-xs text-gray-500">{item.positioning}</p>
+                        <div className="mt-0.5 flex flex-wrap items-center gap-1.5">
+                          {podium && (
+                            <span
+                              className={`inline-flex rounded-full px-2 py-0.5 text-[10px] font-bold ring-1 ring-inset ${podium.labelClass}`}
+                            >
+                              {podium.label}
+                            </span>
+                          )}
+                          <p className="truncate text-xs text-gray-500">{item.positioning}</p>
+                        </div>
                       </div>
                     </div>
 
