@@ -22,54 +22,10 @@
     "participatesInMainRanking": true
   },
   {
-    "id": "openrouter",
-    "name": "OpenRouter",
-    "url": "https://openrouter.ai/",
-    "rank": 2,
-    "score": 69,
-    "evidenceLevel": "model_pricing",
-    "positioning": "最可靠、模型最全",
-    "priceHighlight": "模型页公开输入/输出单价，按模型计费",
-    "riskNote": "便宜不是核心优势，国内支付/访问友好度一般",
-    "evidenceUrl": "https://openrouter.ai/models",
-    "verifiedAt": "2026-05-18",
-    "scores": {
-      "price": 5,
-      "reliability": 8,
-      "coverage": 10,
-      "transparency": 9,
-      "chinaFriendly": 3.5
-    },
-    "logoPath": "/logos/OpenRouter.ico",
-    "participatesInMainRanking": true
-  },
-  {
-    "id": "mixroute",
-    "name": "MixRoute",
-    "url": "https://mixroute.ai/",
-    "rank": 3,
-    "score": 68.5,
-    "evidenceLevel": "billing_public",
-    "positioning": "首充翻倍，短期最划算",
-    "priceHighlight": "官网宣称 official price / zero markup，并提供统一账单",
-    "riskNote": "缺少公开模型级价目表，需继续实测单模型价格",
-    "evidenceUrl": "https://mixroute.ai/",
-    "verifiedAt": "2026-05-18",
-    "scores": {
-      "price": 7,
-      "reliability": 7,
-      "coverage": 7,
-      "transparency": 6,
-      "chinaFriendly": 6.5
-    },
-    "logoPath": "/logos/MixRoute.ico",
-    "participatesInMainRanking": true
-  },
-  {
     "id": "302ai",
     "name": "302.AI",
     "url": "https://302.ai/",
-    "rank": 4,
+    "rank": 2,
     "score": 72,
     "evidenceLevel": "billing_public",
     "positioning": "成熟平台、国内友好",
@@ -91,7 +47,7 @@
     "id": "n1n",
     "name": "n1n.ai",
     "url": "https://n1n.ai/",
-    "rank": 5,
+    "rank": 3,
     "score": 69.5,
     "evidenceLevel": "billing_public",
     "positioning": "低价潜力大，需实测真实性",
@@ -113,7 +69,7 @@
     "id": "aihubmix",
     "name": "AIHubMix",
     "url": "https://aihubmix.com/",
-    "rank": 6,
+    "rank": 4,
     "score": 69.5,
     "evidenceLevel": "billing_public",
     "positioning": "模型覆盖强，价格需继续核验",
@@ -129,6 +85,50 @@
       "chinaFriendly": 7
     },
     "logoPath": "/logos/AiHubMix.ico",
+    "participatesInMainRanking": true
+  },
+  {
+    "id": "openrouter",
+    "name": "OpenRouter",
+    "url": "https://openrouter.ai/",
+    "rank": 5,
+    "score": 69,
+    "evidenceLevel": "model_pricing",
+    "positioning": "最可靠、模型最全",
+    "priceHighlight": "模型页公开输入/输出单价，按模型计费",
+    "riskNote": "便宜不是核心优势，国内支付/访问友好度一般",
+    "evidenceUrl": "https://openrouter.ai/models",
+    "verifiedAt": "2026-05-18",
+    "scores": {
+      "price": 5,
+      "reliability": 8,
+      "coverage": 10,
+      "transparency": 9,
+      "chinaFriendly": 3.5
+    },
+    "logoPath": "/logos/OpenRouter.ico",
+    "participatesInMainRanking": true
+  },
+  {
+    "id": "mixroute",
+    "name": "MixRoute",
+    "url": "https://mixroute.ai/",
+    "rank": 6,
+    "score": 68.5,
+    "evidenceLevel": "billing_public",
+    "positioning": "首充翻倍，短期最划算",
+    "priceHighlight": "官网宣称 official price / zero markup，并提供统一账单",
+    "riskNote": "缺少公开模型级价目表，需继续实测单模型价格",
+    "evidenceUrl": "https://mixroute.ai/",
+    "verifiedAt": "2026-05-18",
+    "scores": {
+      "price": 7,
+      "reliability": 7,
+      "coverage": 7,
+      "transparency": 6,
+      "chinaFriendly": 6.5
+    },
+    "logoPath": "/logos/MixRoute.ico",
     "participatesInMainRanking": true
   },
   {
@@ -176,32 +176,10 @@
     "participatesInMainRanking": true
   },
   {
-    "id": "api2d",
-    "name": "API2D",
-    "url": "https://api2d.com/",
-    "rank": 9,
-    "score": 44.5,
-    "evidenceLevel": "billing_public",
-    "positioning": "老牌但贵",
-    "priceHighlight": "P 点/倍率体系，约官方 1.5 倍",
-    "riskNote": "价格不适合“最便宜”主诉求",
-    "evidenceUrl": "https://api2d.com/wiki/doc",
-    "verifiedAt": "2026-05-18",
-    "scores": {
-      "price": 2,
-      "reliability": 6,
-      "coverage": 5,
-      "transparency": 5,
-      "chinaFriendly": 7
-    },
-    "logoPath": "/logos/API2D.ico",
-    "participatesInMainRanking": true
-  },
-  {
     "id": "chatanywhere",
     "name": "ChatAnywhere",
     "url": "https://chatanywhere.tech/",
-    "rank": 10,
+    "rank": 9,
     "score": 50.5,
     "evidenceLevel": "free_trial",
     "positioning": "免费试用入口，付费不便宜",
@@ -217,6 +195,28 @@
       "chinaFriendly": 7
     },
     "logoPath": "/logos/ChatAnywhere.ico",
+    "participatesInMainRanking": true
+  },
+  {
+    "id": "api2d",
+    "name": "API2D",
+    "url": "https://api2d.com/",
+    "rank": 10,
+    "score": 44.5,
+    "evidenceLevel": "billing_public",
+    "positioning": "老牌但贵",
+    "priceHighlight": "P 点/倍率体系，约官方 1.5 倍",
+    "riskNote": "价格不适合“最便宜”主诉求",
+    "evidenceUrl": "https://api2d.com/wiki/doc",
+    "verifiedAt": "2026-05-18",
+    "scores": {
+      "price": 2,
+      "reliability": 6,
+      "coverage": 5,
+      "transparency": 5,
+      "chinaFriendly": 7
+    },
+    "logoPath": "/logos/API2D.ico",
     "participatesInMainRanking": true
   },
   {

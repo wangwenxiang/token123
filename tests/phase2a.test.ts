@@ -134,16 +134,26 @@ test('ranking data keeps verified main list and community entries separated', ()
     mainRankings.map((item) => item.name),
     [
       'PatewayAI',
-      'OpenRouter',
-      'MixRoute',
       '302.AI',
       'n1n.ai',
       'AIHubMix',
+      'OpenRouter',
+      'MixRoute',
       'CloseAI',
       'UIUIAPI',
-      'API2D',
       'ChatAnywhere',
+      'API2D',
     ],
+  );
+  assert.equal(
+    mainRankings.every((item, index) => item.rank === index + 1),
+    true,
+  );
+  assert.equal(
+    mainRankings.every((item, index, list) => (
+      index === 0 || (list[index - 1].score ?? 0) >= (item.score ?? 0)
+    )),
+    true,
   );
   assert.equal(mainRankings.every((item) => item.verifiedAt === '2026-05-18'), true);
   assert.equal(mainRankings.every((item) => item.rank !== null && item.score !== null && item.scores !== null), true);

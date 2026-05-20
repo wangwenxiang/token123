@@ -38,6 +38,13 @@ const SCORE_LABELS: Array<{ key: keyof RankingScores; label: string; weight: str
   { key: 'chinaFriendly', label: '国内友好度', weight: '10%' },
 ];
 
+const EVIDENCE_PRIORITY: Record<EvidenceLevel, number> = {
+  model_pricing: 0,
+  billing_public: 1,
+  free_trial: 2,
+  community_channel: 3,
+};
+
 function EvidenceBadge({ level }: { level: EvidenceLevel }) {
   const config = EVIDENCE_LABELS[level];
 
@@ -117,7 +124,19 @@ export default function HomeClient({ rankings }: HomeClientProps) {
   const [expandedId, setExpandedId] = useState<string | null>(null);
 
   const mainRankings = useMemo(
-    () => rankings.filter((item) => item.participatesInMainRanking),
+    () => rankings
+      .filter((item) => item.participatesInMainRanking)
+      .sort((a, b) => {
+        const scoreDiff = (b.score ?? 0) - (a.score ?? 0);
+        if (scoreDiff !== 0) {
+          return scoreDiff;
+        }
+        const evidenceDiff = EVIDENCE_PRIORITY[a.evidenceLevel] - EVIDENCE_PRIORITY[b.evidenceLevel];
+        if (evidenceDiff !== 0) {
+          return evidenceDiff;
+        }
+        return 0;
+      }),
     [rankings],
   );
   const communityEntry = rankings.find((item) => item.evidenceLevel === 'community_channel');
@@ -144,9 +163,10 @@ export default function HomeClient({ rankings }: HomeClientProps) {
           </div>
 
           <div className="divide-y divide-slate-100">
-            {mainRankings.map((item) => {
+            {mainRankings.map((item, index) => {
               const expanded = expandedId === item.id;
-              const podium = podiumStyle(item.rank);
+              const displayRank = index + 1;
+              const podium = podiumStyle(displayRank);
 
               return (
                 <article
@@ -158,7 +178,7 @@ export default function HomeClient({ rankings }: HomeClientProps) {
                       <span
                         className={`inline-flex h-9 w-9 items-center justify-center rounded-lg text-sm font-extrabold ${podium ? podium.rank : 'bg-slate-100 text-gray-700'}`}
                       >
-                        {item.rank}
+                        {displayRank}
                       </span>
                       <div className="lg:hidden">
                         <EvidenceBadge level={item.evidenceLevel} />
