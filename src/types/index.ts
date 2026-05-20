@@ -36,6 +36,18 @@ export const EvidenceLevelSchema = z.enum([
 ]);
 export type EvidenceLevel = z.infer<typeof EvidenceLevelSchema>;
 
+export const RiskLevelSchema = z.enum(['low', 'medium', 'high']);
+export type RiskLevel = z.infer<typeof RiskLevelSchema>;
+
+export const ScenarioTagSchema = z.enum([
+  'cheap_claude',
+  'transparent_pricing',
+  'china_friendly',
+  'free_trial',
+  'high_risk',
+]);
+export type ScenarioTag = z.infer<typeof ScenarioTagSchema>;
+
 export const RankingScoresSchema = z.object({
   price: z.number().min(0).max(10),
   reliability: z.number().min(0).max(10),
@@ -59,6 +71,11 @@ export const RankingItemSchema = z.object({
   riskNote: z.string().min(1),
   evidenceUrl: z.string().url().nullable(),
   verifiedAt: z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
+  bestFor: z.string().min(1),
+  riskLevel: RiskLevelSchema,
+  scenarioTags: z.array(ScenarioTagSchema).default([]),
+  evidenceSummary: z.string().min(1),
+  lastVerifiedLabel: z.string().min(1),
   scores: RankingScoresSchema.nullable(),
   logoPath: z.string().nullable().default(null),
   participatesInMainRanking: z.boolean(),

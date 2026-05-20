@@ -19,7 +19,15 @@
       "chinaFriendly": 6
     },
     "logoPath": "/logos/PatewayAI.ico",
-    "participatesInMainRanking": true
+    "participatesInMainRanking": true,
+    "bestFor": "确定性 Claude 低价首选",
+    "riskLevel": "low",
+    "scenarioTags": [
+      "cheap_claude",
+      "transparent_pricing"
+    ],
+    "evidenceSummary": "公开 Claude/OpenAI 模型级价目表，约官方 8 折。",
+    "lastVerifiedLabel": "核验：2026-05-18"
   },
   {
     "id": "302ai",
@@ -41,7 +49,15 @@
       "chinaFriendly": 8.5
     },
     "logoPath": "/logos/302.AI.ico",
-    "participatesInMainRanking": true
+    "participatesInMainRanking": true,
+    "bestFor": "国内友好的一站式平台",
+    "riskLevel": "medium",
+    "scenarioTags": [
+      "china_friendly",
+      "transparent_pricing"
+    ],
+    "evidenceSummary": "公开按量付费入口，支付和访问更适合国内用户。",
+    "lastVerifiedLabel": "核验：2026-05-18"
   },
   {
     "id": "n1n",
@@ -63,7 +79,14 @@
       "chinaFriendly": 6.5
     },
     "logoPath": "/logos/n1n.ai.ico",
-    "participatesInMainRanking": true
+    "participatesInMainRanking": true,
+    "bestFor": "低价潜力观察项",
+    "riskLevel": "medium",
+    "scenarioTags": [
+      "cheap_claude"
+    ],
+    "evidenceSummary": "文档公开折扣与按量计费，但仍需模型级账单实测。",
+    "lastVerifiedLabel": "核验：2026-05-18"
   },
   {
     "id": "aihubmix",
@@ -85,7 +108,15 @@
       "chinaFriendly": 7
     },
     "logoPath": "/logos/AiHubMix.ico",
-    "participatesInMainRanking": true
+    "participatesInMainRanking": true,
+    "bestFor": "模型覆盖和国内体验平衡",
+    "riskLevel": "medium",
+    "scenarioTags": [
+      "cheap_claude",
+      "china_friendly"
+    ],
+    "evidenceSummary": "FAQ 公开 token 计费口径，模型覆盖较广。",
+    "lastVerifiedLabel": "核验：2026-05-18"
   },
   {
     "id": "openrouter",
@@ -107,7 +138,15 @@
       "chinaFriendly": 3.5
     },
     "logoPath": "/logos/OpenRouter.ico",
-    "participatesInMainRanking": true
+    "participatesInMainRanking": true,
+    "bestFor": "最透明可靠的模型聚合",
+    "riskLevel": "low",
+    "scenarioTags": [
+      "cheap_claude",
+      "transparent_pricing"
+    ],
+    "evidenceSummary": "模型页公开输入/输出单价，证据透明度高。",
+    "lastVerifiedLabel": "核验：2026-05-18"
   },
   {
     "id": "mixroute",
@@ -129,7 +168,14 @@
       "chinaFriendly": 6.5
     },
     "logoPath": "/logos/MixRoute.ico",
-    "participatesInMainRanking": true
+    "participatesInMainRanking": true,
+    "bestFor": "首充活动型短期低价",
+    "riskLevel": "medium",
+    "scenarioTags": [
+      "cheap_claude"
+    ],
+    "evidenceSummary": "公开 official price / zero markup 宣称，但缺少完整模型级价目表。",
+    "lastVerifiedLabel": "核验：2026-05-18"
   },
   {
     "id": "closeai",
@@ -151,7 +197,15 @@
       "chinaFriendly": 10
     },
     "logoPath": "/logos/CloseAI.ico",
-    "participatesInMainRanking": true
+    "participatesInMainRanking": true,
+    "bestFor": "企业稳定和国内访问",
+    "riskLevel": "low",
+    "scenarioTags": [
+      "china_friendly",
+      "transparent_pricing"
+    ],
+    "evidenceSummary": "公开倍率/模型计费体系，国内访问友好。",
+    "lastVerifiedLabel": "核验：2026-05-18"
   },
   {
     "id": "uiuiapi",
@@ -173,7 +227,14 @@
       "chinaFriendly": 6.5
     },
     "logoPath": "/logos/UIUIAPI.ico",
-    "participatesInMainRanking": true
+    "participatesInMainRanking": true,
+    "bestFor": "折扣潜力观察项",
+    "riskLevel": "medium",
+    "scenarioTags": [
+      "cheap_claude"
+    ],
+    "evidenceSummary": "公开聚合与折扣宣传，模型级价格证据仍不足。",
+    "lastVerifiedLabel": "核验：2026-05-18"
   },
   {
     "id": "chatanywhere",
@@ -195,7 +256,14 @@
       "chinaFriendly": 7
     },
     "logoPath": "/logos/ChatAnywhere.ico",
-    "participatesInMainRanking": true
+    "participatesInMainRanking": true,
+    "bestFor": "免费试用入口",
+    "riskLevel": "medium",
+    "scenarioTags": [
+      "free_trial"
+    ],
+    "evidenceSummary": "提供免费 Key 试用，适合低门槛体验。",
+    "lastVerifiedLabel": "核验：2026-05-18"
   },
   {
     "id": "api2d",
@@ -217,7 +285,15 @@
       "chinaFriendly": 7
     },
     "logoPath": "/logos/API2D.ico",
-    "participatesInMainRanking": true
+    "participatesInMainRanking": true,
+    "bestFor": "老牌付费备选",
+    "riskLevel": "medium",
+    "scenarioTags": [
+      "china_friendly",
+      "transparent_pricing"
+    ],
+    "evidenceSummary": "公开 P 点/倍率体系，但价格竞争力弱。",
+    "lastVerifiedLabel": "核验：2026-05-18"
   },
   {
     "id": "zhuanfazhan",
@@ -233,6 +309,13 @@
     "verifiedAt": "2026-05-18",
     "scores": null,
     "logoPath": "/logos/转发站.ico",
-    "participatesInMainRanking": false
+    "participatesInMainRanking": false,
+    "bestFor": "高风险社群入口",
+    "riskLevel": "high",
+    "scenarioTags": [
+      "high_risk"
+    ],
+    "evidenceSummary": "仅是社群渠道聚合，不是具体可核验服务品牌。",
+    "lastVerifiedLabel": "核验：2026-05-18"
   }
 ]

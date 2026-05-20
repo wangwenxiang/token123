@@ -156,6 +156,32 @@ test('ranking data keeps verified main list and community entries separated', ()
     true,
   );
   assert.equal(mainRankings.every((item) => item.verifiedAt === '2026-05-18'), true);
+  assert.equal(
+    mainRankings.every((item) => (
+      item.bestFor.length > 0
+      && item.evidenceSummary.length > 0
+      && item.lastVerifiedLabel === `核验：${item.verifiedAt}`
+      && item.scenarioTags.length > 0
+      && item.riskLevel !== 'high'
+    )),
+    true,
+  );
+  assert.equal(
+    mainRankings.some((item) => item.scenarioTags.includes('cheap_claude')),
+    true,
+  );
+  assert.equal(
+    mainRankings.some((item) => item.scenarioTags.includes('transparent_pricing')),
+    true,
+  );
+  assert.equal(
+    mainRankings.some((item) => item.scenarioTags.includes('china_friendly')),
+    true,
+  );
+  assert.equal(
+    mainRankings.some((item) => item.scenarioTags.includes('free_trial')),
+    true,
+  );
   assert.equal(mainRankings.every((item) => item.rank !== null && item.score !== null && item.scores !== null), true);
   assert.equal(
     mainRankings.every((item) => (
@@ -166,7 +192,7 @@ test('ranking data keeps verified main list and community entries separated', ()
     true,
   );
   assert.deepEqual(
-    communityEntries.map((item) => [item.name, item.rank, item.score, item.scores, item.evidenceLevel]),
-    [['转发站', null, null, null, 'community_channel']],
+    communityEntries.map((item) => [item.name, item.rank, item.score, item.scores, item.evidenceLevel, item.riskLevel]),
+    [['转发站', null, null, null, 'community_channel', 'high']],
   );
 });
