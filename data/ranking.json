@@ -8,7 +8,6 @@
     "evidenceLevel": "model_pricing",
     "positioning": "最便宜且可验证",
     "priceHighlight": "Claude / OpenAI 公开模型价，约官方 8 折",
-    "riskNote": "价格页可核验，公司背景仍需继续观察",
     "evidenceUrl": "https://pateway.ai/docs/pricing.html",
     "verifiedAt": "2026-05-18",
     "scores": {
@@ -21,13 +20,18 @@
     "logoPath": "/logos/PatewayAI.ico",
     "participatesInMainRanking": true,
     "bestFor": "确定性 Claude 低价首选",
-    "riskLevel": "low",
     "scenarioTags": [
       "cheap_claude",
       "transparent_pricing"
     ],
     "evidenceSummary": "公开 Claude/OpenAI 模型级价目表，约官方 8 折。",
-    "lastVerifiedLabel": "核验：2026-05-18"
+    "lastVerifiedLabel": "核验：2026-05-18",
+    "usageNote": "价格页可核验，适合优先验证 Claude 低价效果。",
+    "strengthTags": [
+      "price_advantage",
+      "transparent_pricing",
+      "verified_evidence"
+    ]
   },
   {
     "id": "302ai",
@@ -38,7 +42,6 @@
     "evidenceLevel": "billing_public",
     "positioning": "成熟平台、国内友好",
     "priceHighlight": "公开按量付费和实时价格入口",
-    "riskNote": "需补齐常用模型级价目表后再上调排名",
     "evidenceUrl": "https://studio.302.ai/en/docs/pricing",
     "verifiedAt": "2026-05-18",
     "scores": {
@@ -51,13 +54,18 @@
     "logoPath": "/logos/302.AI.ico",
     "participatesInMainRanking": true,
     "bestFor": "国内友好的一站式平台",
-    "riskLevel": "medium",
     "scenarioTags": [
       "china_friendly",
       "transparent_pricing"
     ],
     "evidenceSummary": "公开按量付费入口，支付和访问更适合国内用户。",
-    "lastVerifiedLabel": "核验：2026-05-18"
+    "lastVerifiedLabel": "核验：2026-05-18",
+    "usageNote": "成熟平台和国内体验较好，模型级价目表仍可继续补充核验。",
+    "strengthTags": [
+      "china_friendly",
+      "easy_start",
+      "model_coverage"
+    ]
   },
   {
     "id": "n1n",
@@ -68,7 +76,6 @@
     "evidenceLevel": "billing_public",
     "positioning": "低价潜力大，需实测真实性",
     "priceHighlight": "文档宣称 pay-as-you-go/discounts，低至官方 10%",
-    "riskNote": "公开信息偏营销，需补模型实测账单",
     "evidenceUrl": "https://docs.n1n.ai/en",
     "verifiedAt": "2026-05-18",
     "scores": {
@@ -81,12 +88,16 @@
     "logoPath": "/logos/n1n.ai.ico",
     "participatesInMainRanking": true,
     "bestFor": "低价潜力观察项",
-    "riskLevel": "medium",
     "scenarioTags": [
       "cheap_claude"
     ],
     "evidenceSummary": "文档公开折扣与按量计费，但仍需模型级账单实测。",
-    "lastVerifiedLabel": "核验：2026-05-18"
+    "lastVerifiedLabel": "核验：2026-05-18",
+    "usageNote": "适合关注低价潜力的用户，建议先小额测试账单一致性。",
+    "strengthTags": [
+      "price_advantage",
+      "easy_start"
+    ]
   },
   {
     "id": "aihubmix",
@@ -97,7 +108,6 @@
     "evidenceLevel": "billing_public",
     "positioning": "模型覆盖强，价格需继续核验",
     "priceHighlight": "FAQ 公开按 token 计费、部分模型更优惠",
-    "riskNote": "部分价格入口需登录或模型页核验",
     "evidenceUrl": "https://aihubmix.ai/faq.html",
     "verifiedAt": "2026-05-18",
     "scores": {
@@ -110,13 +120,18 @@
     "logoPath": "/logos/AiHubMix.ico",
     "participatesInMainRanking": true,
     "bestFor": "模型覆盖和国内体验平衡",
-    "riskLevel": "medium",
     "scenarioTags": [
       "cheap_claude",
       "china_friendly"
     ],
     "evidenceSummary": "FAQ 公开 token 计费口径，模型覆盖较广。",
-    "lastVerifiedLabel": "核验：2026-05-18"
+    "lastVerifiedLabel": "核验：2026-05-18",
+    "usageNote": "模型覆盖较广，适合多模型调用场景，价格仍建议按常用模型实测。",
+    "strengthTags": [
+      "model_coverage",
+      "china_friendly",
+      "easy_start"
+    ]
   },
   {
     "id": "openrouter",
@@ -127,7 +142,6 @@
     "evidenceLevel": "model_pricing",
     "positioning": "最可靠、模型最全",
     "priceHighlight": "模型页公开输入/输出单价，按模型计费",
-    "riskNote": "便宜不是核心优势，国内支付/访问友好度一般",
     "evidenceUrl": "https://openrouter.ai/models",
     "verifiedAt": "2026-05-18",
     "scores": {
@@ -140,13 +154,19 @@
     "logoPath": "/logos/OpenRouter.ico",
     "participatesInMainRanking": true,
     "bestFor": "最透明可靠的模型聚合",
-    "riskLevel": "low",
     "scenarioTags": [
       "cheap_claude",
       "transparent_pricing"
     ],
     "evidenceSummary": "模型页公开输入/输出单价，证据透明度高。",
-    "lastVerifiedLabel": "核验：2026-05-18"
+    "lastVerifiedLabel": "核验：2026-05-18",
+    "usageNote": "透明度和模型覆盖强，适合作为价格基准和稳定聚合入口。",
+    "strengthTags": [
+      "transparent_pricing",
+      "model_coverage",
+      "stable_service",
+      "verified_evidence"
+    ]
   },
   {
     "id": "mixroute",
@@ -157,7 +177,6 @@
     "evidenceLevel": "billing_public",
     "positioning": "首充翻倍，短期最划算",
     "priceHighlight": "官网宣称 official price / zero markup，并提供统一账单",
-    "riskNote": "缺少公开模型级价目表，需继续实测单模型价格",
     "evidenceUrl": "https://mixroute.ai/",
     "verifiedAt": "2026-05-18",
     "scores": {
@@ -170,12 +189,16 @@
     "logoPath": "/logos/MixRoute.ico",
     "participatesInMainRanking": true,
     "bestFor": "首充活动型短期低价",
-    "riskLevel": "medium",
     "scenarioTags": [
       "cheap_claude"
     ],
     "evidenceSummary": "公开 official price / zero markup 宣称，但缺少完整模型级价目表。",
-    "lastVerifiedLabel": "核验：2026-05-18"
+    "lastVerifiedLabel": "核验：2026-05-18",
+    "usageNote": "适合短期活动价和首充场景，长期成本需结合实际用量复算。",
+    "strengthTags": [
+      "price_advantage",
+      "easy_start"
+    ]
   },
   {
     "id": "closeai",
@@ -186,7 +209,6 @@
     "evidenceLevel": "model_pricing",
     "positioning": "企业稳定型，不主打便宜",
     "priceHighlight": "公开倍率/模型计费体系，适合稳定优先",
-    "riskNote": "价格竞争力一般，需持续核验当前模型倍率",
     "evidenceUrl": "https://www.closeai-asia.com/",
     "verifiedAt": "2026-05-18",
     "scores": {
@@ -199,13 +221,18 @@
     "logoPath": "/logos/CloseAI.ico",
     "participatesInMainRanking": true,
     "bestFor": "企业稳定和国内访问",
-    "riskLevel": "low",
     "scenarioTags": [
       "china_friendly",
       "transparent_pricing"
     ],
     "evidenceSummary": "公开倍率/模型计费体系，国内访问友好。",
-    "lastVerifiedLabel": "核验：2026-05-18"
+    "lastVerifiedLabel": "核验：2026-05-18",
+    "usageNote": "适合更看重稳定和国内访问体验的企业场景。",
+    "strengthTags": [
+      "stable_service",
+      "china_friendly",
+      "transparent_pricing"
+    ]
   },
   {
     "id": "uiuiapi",
@@ -216,7 +243,6 @@
     "evidenceLevel": "billing_public",
     "positioning": "有折扣潜力，透明度不足",
     "priceHighlight": "宣称 300+ 模型聚合与折扣价格",
-    "riskNote": "公开模型级价格不足，需补核验链接或实测",
     "evidenceUrl": "https://uiuiapi.com/",
     "verifiedAt": "2026-05-18",
     "scores": {
@@ -229,12 +255,16 @@
     "logoPath": "/logos/UIUIAPI.ico",
     "participatesInMainRanking": true,
     "bestFor": "折扣潜力观察项",
-    "riskLevel": "medium",
     "scenarioTags": [
       "cheap_claude"
     ],
     "evidenceSummary": "公开聚合与折扣宣传，模型级价格证据仍不足。",
-    "lastVerifiedLabel": "核验：2026-05-18"
+    "lastVerifiedLabel": "核验：2026-05-18",
+    "usageNote": "适合关注折扣潜力的用户，建议补充常用模型账单核验。",
+    "strengthTags": [
+      "price_advantage",
+      "model_coverage"
+    ]
   },
   {
     "id": "chatanywhere",
@@ -245,7 +275,6 @@
     "evidenceLevel": "free_trial",
     "positioning": "免费试用入口，付费不便宜",
     "priceHighlight": "免费 Key 可试用，付费适合轻量 GPT 场景",
-    "riskNote": "免费价值高，但不适合作为低价付费主榜首选",
     "evidenceUrl": "https://chatanywhere.tech/",
     "verifiedAt": "2026-05-18",
     "scores": {
@@ -258,12 +287,16 @@
     "logoPath": "/logos/ChatAnywhere.ico",
     "participatesInMainRanking": true,
     "bestFor": "免费试用入口",
-    "riskLevel": "medium",
     "scenarioTags": [
       "free_trial"
     ],
     "evidenceSummary": "提供免费 Key 试用，适合低门槛体验。",
-    "lastVerifiedLabel": "核验：2026-05-18"
+    "lastVerifiedLabel": "核验：2026-05-18",
+    "usageNote": "适合免费试用和低门槛体验，不作为低价付费首选。",
+    "strengthTags": [
+      "free_trial",
+      "easy_start"
+    ]
   },
   {
     "id": "api2d",
@@ -274,7 +307,6 @@
     "evidenceLevel": "billing_public",
     "positioning": "老牌但贵",
     "priceHighlight": "P 点/倍率体系，约官方 1.5 倍",
-    "riskNote": "价格不适合“最便宜”主诉求",
     "evidenceUrl": "https://api2d.com/wiki/doc",
     "verifiedAt": "2026-05-18",
     "scores": {
@@ -287,13 +319,18 @@
     "logoPath": "/logos/API2D.ico",
     "participatesInMainRanking": true,
     "bestFor": "老牌付费备选",
-    "riskLevel": "medium",
     "scenarioTags": [
       "china_friendly",
       "transparent_pricing"
     ],
     "evidenceSummary": "公开 P 点/倍率体系，但价格竞争力弱。",
-    "lastVerifiedLabel": "核验：2026-05-18"
+    "lastVerifiedLabel": "核验：2026-05-18",
+    "usageNote": "老牌付费备选，适合已有使用习惯的用户。",
+    "strengthTags": [
+      "stable_service",
+      "china_friendly",
+      "transparent_pricing"
+    ]
   },
   {
     "id": "zhuanfazhan",
@@ -302,20 +339,18 @@
     "rank": null,
     "score": null,
     "evidenceLevel": "community_channel",
-    "positioning": "高风险社群渠道",
+    "positioning": "信息不足待核验",
     "priceHighlight": "价格可能极低，但非具体品牌榜单项",
-    "riskNote": "需自行甄别跑路、掺假、降智、售后缺失等风险",
     "evidenceUrl": "https://www.zhuanfazhan.com/home",
     "verifiedAt": "2026-05-18",
     "scores": null,
     "logoPath": "/logos/转发站.ico",
     "participatesInMainRanking": false,
-    "bestFor": "高风险社群入口",
-    "riskLevel": "high",
-    "scenarioTags": [
-      "high_risk"
-    ],
-    "evidenceSummary": "仅是社群渠道聚合，不是具体可核验服务品牌。",
-    "lastVerifiedLabel": "核验：2026-05-18"
+    "bestFor": "非标准渠道，暂不进入主榜",
+    "scenarioTags": [],
+    "evidenceSummary": "非具体品牌价目表，缺少稳定可核验的模型级价格证据。",
+    "lastVerifiedLabel": "核验：2026-05-18",
+    "usageNote": "非标准渠道，价格和服务稳定性缺少可核验证据，暂不纳入主榜。",
+    "strengthTags": []
   }
 ]

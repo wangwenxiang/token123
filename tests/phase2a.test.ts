@@ -162,7 +162,8 @@ test('ranking data keeps verified main list and community entries separated', ()
       && item.evidenceSummary.length > 0
       && item.lastVerifiedLabel === `核验：${item.verifiedAt}`
       && item.scenarioTags.length > 0
-      && item.riskLevel !== 'high'
+      && item.strengthTags.length > 0
+      && item.usageNote.length > 0
     )),
     true,
   );
@@ -192,7 +193,15 @@ test('ranking data keeps verified main list and community entries separated', ()
     true,
   );
   assert.deepEqual(
-    communityEntries.map((item) => [item.name, item.rank, item.score, item.scores, item.evidenceLevel, item.riskLevel]),
-    [['转发站', null, null, null, 'community_channel', 'high']],
+    communityEntries.map((item) => [
+      item.name,
+      item.rank,
+      item.score,
+      item.scores,
+      item.evidenceLevel,
+      item.strengthTags,
+      item.usageNote,
+    ]),
+    [['转发站', null, null, null, 'community_channel', [], '非标准渠道，价格和服务稳定性缺少可核验证据，暂不纳入主榜。']],
   );
 });

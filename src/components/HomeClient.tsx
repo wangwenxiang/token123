@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useMemo, useState } from 'react';
-import type { EvidenceLevel, RankingItem, RankingScores, RiskLevel, ScenarioTag } from '@/types';
+import type { EvidenceLevel, RankingItem, RankingScores, ScenarioTag, StrengthTag } from '@/types';
 
 interface HomeClientProps {
   rankings: RankingItem[];
@@ -24,25 +24,21 @@ const EVIDENCE_LABELS: Record<EvidenceLevel, { label: string; className: string;
     helper: '适合作为试用入口，不代表付费最低价',
   },
   community_channel: {
-    label: '高风险社群',
-    className: 'bg-amber-50 text-amber-800 ring-amber-600/20',
-    helper: '不参与综合评分，需自行甄别风险',
+    label: '未纳入主榜',
+    className: 'bg-slate-100 text-slate-700 ring-slate-500/20',
+    helper: '信息不足或非标准渠道，暂不参与主榜',
   },
 };
 
-const RISK_LABELS: Record<RiskLevel, { label: string; className: string }> = {
-  low: {
-    label: '低风险',
-    className: 'bg-emerald-50 text-emerald-700 ring-emerald-600/20',
-  },
-  medium: {
-    label: '中风险',
-    className: 'bg-amber-50 text-amber-800 ring-amber-600/20',
-  },
-  high: {
-    label: '高风险',
-    className: 'bg-red-50 text-red-700 ring-red-600/20',
-  },
+const STRENGTH_LABELS: Record<StrengthTag, string> = {
+  price_advantage: '价格优势',
+  transparent_pricing: '价格透明',
+  stable_service: '稳定可信',
+  model_coverage: '模型覆盖',
+  china_friendly: '国内可用',
+  easy_start: '上手简单',
+  verified_evidence: '证据充分',
+  free_trial: '免费试用',
 };
 
 const SCORE_LABELS: Array<{ key: keyof RankingScores; label: string; weight: string }> = [
@@ -94,13 +90,18 @@ function EvidenceBadge({ level }: { level: EvidenceLevel }) {
   );
 }
 
-function RiskBadge({ level }: { level: RiskLevel }) {
-  const config = RISK_LABELS[level];
-
+function StrengthTags({ tags }: { tags: StrengthTag[] }) {
   return (
-    <span className={`inline-flex items-center rounded-full px-2 py-0.5 text-[11px] font-bold ring-1 ring-inset ${config.className}`}>
-      {config.label}
-    </span>
+    <>
+      {tags.slice(0, 3).map((tag) => (
+        <span
+          key={tag}
+          className="inline-flex items-center rounded-full bg-indigo-50 px-2 py-0.5 text-[11px] font-semibold text-indigo-700 ring-1 ring-inset ring-indigo-600/20"
+        >
+          {STRENGTH_LABELS[tag]}
+        </span>
+      ))}
+    </>
   );
 }
 
@@ -214,7 +215,6 @@ export default function HomeClient({ rankings }: HomeClientProps) {
   const [onlyClaude, setOnlyClaude] = useState(false);
   const [onlyModelPricing, setOnlyModelPricing] = useState(false);
   const [onlyFreeTrial, setOnlyFreeTrial] = useState(false);
-  const [hideHighRisk, setHideHighRisk] = useState(true);
   const [methodologyOpen, setMethodologyOpen] = useState(false);
 
   const activeScenarioConfig = SCENARIOS.find((scenario) => scenario.key === activeScenario) ?? SCENARIOS[0];
@@ -222,9 +222,6 @@ export default function HomeClient({ rankings }: HomeClientProps) {
     () => {
       const filtered = rankings.filter((item) => {
         if (!item.participatesInMainRanking) {
-          return false;
-        }
-        if (hideHighRisk && item.riskLevel === 'high') {
           return false;
         }
         if (activeScenarioConfig.tag && !item.scenarioTags.includes(activeScenarioConfig.tag)) {
@@ -244,7 +241,7 @@ export default function HomeClient({ rankings }: HomeClientProps) {
 
       return sortRankings(filtered, sortKey);
     },
-    [rankings, activeScenarioConfig.tag, hideHighRisk, onlyClaude, onlyModelPricing, onlyFreeTrial, sortKey],
+    [rankings, activeScenarioConfig.tag, onlyClaude, onlyModelPricing, onlyFreeTrial, sortKey],
   );
   const communityEntry = rankings.find((item) => item.evidenceLevel === 'community_channel');
   const lastVerifiedLabel = mainRankings[0]?.lastVerifiedLabel ?? '核验日期待补充';
@@ -262,7 +259,6 @@ export default function HomeClient({ rankings }: HomeClientProps) {
     setOnlyClaude(false);
     setOnlyModelPricing(false);
     setOnlyFreeTrial(false);
-    setHideHighRisk(true);
     setExpandedId(null);
   }
 
@@ -310,7 +306,7 @@ export default function HomeClient({ rankings }: HomeClientProps) {
 
           <div className="mt-3 flex flex-col gap-3 border-t border-slate-100 pt-3 lg:flex-row lg:items-center lg:justify-between">
             <p className="text-xs text-gray-500">
-              当前视图：{activeScenarioConfig.label}，按 {SORT_LABELS[sortKey]} 降序。高风险项默认隐藏。
+              当前视图：{activeScenarioConfig.label}，按 {SORT_LABELS[sortKey]} 降序。主榜只展示证据可核验的站点。
             </p>
             <div className="flex flex-wrap items-center gap-2">
               <label className="text-xs font-semibold text-gray-500">
@@ -332,7 +328,6 @@ export default function HomeClient({ rankings }: HomeClientProps) {
                 ['只看 Claude 可用', onlyClaude, setOnlyClaude],
                 ['模型级价目表', onlyModelPricing, setOnlyModelPricing],
                 ['免费试用', onlyFreeTrial, setOnlyFreeTrial],
-                ['隐藏高风险', hideHighRisk, setHideHighRisk],
               ].map(([label, checked, setter]) => (
                 <label key={label as string} className="inline-flex items-center gap-1.5 rounded-lg border border-slate-200 px-2 py-1 text-xs font-medium text-gray-600">
                   <input
@@ -419,7 +414,7 @@ export default function HomeClient({ rankings }: HomeClientProps) {
 
                     <div className="flex flex-wrap gap-1.5">
                       <EvidenceBadge level={item.evidenceLevel} />
-                      <RiskBadge level={item.riskLevel} />
+                      <StrengthTags tags={item.strengthTags} />
                     </div>
 
                     <div>
@@ -473,9 +468,9 @@ export default function HomeClient({ rankings }: HomeClientProps) {
                       </div>
                       <ScoreBreakdown scores={item.scores} />
                       <div className="mt-3 grid gap-2 text-xs sm:grid-cols-2">
-                        <div className="rounded-lg bg-amber-50 p-3 text-amber-900">
-                          <p className="font-bold">风险说明</p>
-                          <p className="mt-1 leading-5">{item.riskNote}</p>
+                        <div className="rounded-lg bg-indigo-50 p-3 text-indigo-900">
+                          <p className="font-bold">使用提示</p>
+                          <p className="mt-1 leading-5">{item.usageNote}</p>
                         </div>
                         <div className="rounded-lg bg-slate-50 p-3 text-gray-600">
                           <p className="font-bold text-gray-900">不确定项</p>
@@ -503,7 +498,7 @@ export default function HomeClient({ rankings }: HomeClientProps) {
             <div className="mt-3 space-y-3">
               <p className="text-xs leading-5 text-gray-500">
                 综合分 = 价格竞争力 35% + 可靠性 30% + 模型覆盖 15% + 价格透明度 10% + 国内友好度 10%。
-                高风险社群不进入主榜；价格和可用性以公开页面与实测账单为准。
+                主榜只展示证据可核验的站点；价格和可用性以公开页面与实测账单为准。
               </p>
               <div className="flex flex-wrap gap-2">
                 {(Object.keys(EVIDENCE_LABELS) as EvidenceLevel[]).map((level) => (
@@ -515,23 +510,23 @@ export default function HomeClient({ rankings }: HomeClientProps) {
         </section>
 
         {communityEntry && (
-          <section className="mt-6 rounded-xl border border-amber-200 bg-amber-50/70 p-4">
+          <section className="mt-6 rounded-xl border border-slate-200 bg-slate-50 p-4">
             <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
               <div>
                 <div className="mb-2">
                   <EvidenceBadge level={communityEntry.evidenceLevel} />
                 </div>
-                <h2 className="text-base font-bold text-amber-950">{communityEntry.name}</h2>
-                <p className="mt-1 text-sm text-amber-900">{communityEntry.riskNote}</p>
-                <p className="mt-1 text-xs text-amber-800">不参与综合评分；仅作为高风险社群渠道入口保留。</p>
+                <h2 className="text-base font-bold text-gray-950">未纳入主榜：{communityEntry.name}</h2>
+                <p className="mt-1 text-sm text-gray-700">{communityEntry.usageNote}</p>
+                <p className="mt-1 text-xs text-gray-500">不参与综合评分；等待更稳定、可核验的站点信息后再评估。</p>
               </div>
               <a
                 href={communityEntry.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex justify-center rounded-lg bg-amber-900 px-3 py-2 text-xs font-semibold text-white transition hover:bg-amber-800"
+                className="inline-flex justify-center rounded-lg bg-gray-950 px-3 py-2 text-xs font-semibold text-white transition hover:bg-indigo-600"
               >
-                自行甄别后访问
+                查看入口
               </a>
             </div>
           </section>
