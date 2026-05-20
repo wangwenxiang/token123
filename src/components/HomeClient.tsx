@@ -125,45 +125,22 @@ export default function HomeClient({ rankings }: HomeClientProps) {
   return (
     <div className="min-h-screen bg-gradient-to-b from-slate-50 via-white to-white text-gray-900 selection:bg-indigo-100 selection:text-indigo-900">
       <header className="border-b border-slate-200 bg-white/85">
-        <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
-          <div className="max-w-3xl">
-            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-indigo-600">
-              Evidence-first ranking
-            </p>
-            <h1 className="mt-2 text-2xl font-extrabold tracking-tight text-gray-950 sm:text-3xl">
+        <div className="mx-auto max-w-7xl px-4 py-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between">
+            <h1 className="text-2xl font-extrabold tracking-tight text-gray-950 sm:text-3xl">
               AI Token 中转站权威榜单
             </h1>
-            <p className="mt-2 text-sm leading-6 text-gray-600">
-              按价格、可靠性和透明度综合排序。榜单只使用可核实证据，不把社区传言作为主排名依据。
+            <p className="text-sm text-gray-600">
+              按可核验证据排序，优先推荐便宜、可靠、透明的平台。
             </p>
           </div>
         </div>
       </header>
 
-      <main className="mx-auto w-full max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
-        <section className="mb-6 rounded-xl border border-slate-200 bg-white p-4">
-          <div className="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
-            <div>
-              <h2 className="text-base font-bold text-gray-950">综合榜规则</h2>
-              <p className="mt-1 text-xs leading-5 text-gray-500">
-                综合分 = 价格竞争力 35% + 可靠性 30% + 模型覆盖 15% + 价格透明度 10% + 国内友好度 10%。
-                榜单按当前产品推荐价值排序，不只按分数机械排序。
-              </p>
-            </div>
-            <div className="flex flex-wrap gap-2">
-              {(Object.keys(EVIDENCE_LABELS) as EvidenceLevel[]).map((level) => (
-                <EvidenceBadge key={level} level={level} />
-              ))}
-            </div>
-          </div>
-        </section>
-
+      <main className="mx-auto w-full max-w-7xl px-4 py-4 sm:px-6 lg:px-8">
         <section className="overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm">
           <div className="border-b border-slate-200 px-4 py-3">
             <h2 className="text-base font-bold text-gray-950">当前权威榜单 v1</h2>
-            <p className="mt-1 text-xs text-gray-500">
-              主榜只展示已具备可核实价格或计费依据的站点；点击“展开”查看评分拆解和证据来源。
-            </p>
           </div>
 
           <div className="divide-y divide-slate-100">
@@ -274,6 +251,20 @@ export default function HomeClient({ rankings }: HomeClientProps) {
                 </article>
               );
             })}
+          </div>
+        </section>
+
+        <section className="mt-4 rounded-xl border border-slate-200 bg-white p-4">
+          <div className="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
+            <p className="text-xs leading-5 text-gray-500">
+              综合分 = 价格竞争力 35% + 可靠性 30% + 模型覆盖 15% + 价格透明度 10% + 国内友好度 10%。
+              点击榜单“展开”查看评分拆解和证据来源。
+            </p>
+            <div className="flex flex-wrap gap-2">
+              {(Object.keys(EVIDENCE_LABELS) as EvidenceLevel[]).map((level) => (
+                <EvidenceBadge key={level} level={level} />
+              ))}
+            </div>
           </div>
         </section>
 
